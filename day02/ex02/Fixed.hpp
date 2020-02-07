@@ -22,7 +22,7 @@ class Fixed
 
 		Fixed			operator++(int);
 		Fixed&			operator++();
-		Fixed&			operator--(int a);
+		Fixed			operator--(int);
 		Fixed&			operator--();
 
 		float			operator*(const Fixed& op);
@@ -41,8 +41,10 @@ class Fixed
 		static const int bits = 8;
 };
 
+Fixed&					max(Fixed& a, Fixed& b);
 const Fixed&			max(const Fixed& a, const Fixed& b);
 std::ostream&	operator<<(std::ostream& out, const Fixed& a);
+Fixed&			min(Fixed& a, Fixed& b);
 const Fixed&			min(const Fixed& a, const Fixed& b);
 
 #endif

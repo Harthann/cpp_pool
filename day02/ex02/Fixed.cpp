@@ -71,7 +71,7 @@ Fixed&	Fixed::operator++()
 	return (*this);
 }
 
-Fixed&	Fixed::operator--(int a)
+Fixed	Fixed::operator--(int)
 {
 	this->fix_point--;
 	return (*this);
@@ -138,9 +138,24 @@ std::ostream& operator<<(std::ostream& out, const Fixed& a)
 	return (out);
 }
 
-const Fixed&		max(const Fixed& a, const Fixed& b)
+Fixed&		max(Fixed& a, Fixed& b)
 {
 	if (a > b)
+		return (a);
+	return (b);
+}
+
+const Fixed&		max(const Fixed& a, const Fixed& b)
+{
+	std::cout << "Const\n";
+	if (a > b)
+		return (a);
+	return (b);
+}
+
+Fixed&		min(Fixed& a, Fixed& b)
+{
+	if (a < b)
 		return (a);
 	return (b);
 }

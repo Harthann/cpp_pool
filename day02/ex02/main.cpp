@@ -6,7 +6,8 @@ int		main(void)
 {
 	Fixed a(0);
 	Fixed b(Fixed(10.05f) * Fixed(2));
-	Fixed c(10.0f);
+	const Fixed c(10.0f);
+	const Fixed d(Fixed(10.05f) * Fixed(2));
 
 	std::cout << "a = " << a << std::endl;
 
@@ -29,5 +30,5 @@ int		main(void)
 	std::cout << a++ << std::endl;
 	std::cout << a << std::endl;
 
-	std::cout << max(a, b) << std::endl;
+	std::cout << max( c, d) << std::endl;
 }
