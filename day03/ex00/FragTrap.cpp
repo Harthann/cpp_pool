@@ -87,8 +87,9 @@ void	FragTrap::vaulthunter_dot_exe(std::string const &target)
 			std::cout << "< B0MB0-TR4P activated >\n";
 			std::cout << "<" << this->Name << ">" << " Activate the key, press the button and BOOOOOOOOM\n";
 			std::cout << target << " is blown awy by the epxlosion\n";
-		}
-		
+		}	
 	}
 	this->Energy -= 25;
+	if (this->Energy < 0)
+		this->Energy = 0;
 }

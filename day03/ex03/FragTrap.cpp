@@ -4,49 +4,23 @@
 //	CONSTRUCTOR/DESTRUCTOR	#
 //###########################
 
-FragTrap::FragTrap(std::string name) :
-HP(100), MaxHP(100), Energy(100), Level(1), Name(name), MeleeDamage(30), RangeDamage(20), ArmorReduction(5)
+FragTrap::FragTrap(std::string name) : ClapTrap(name)
 {
 	std::srand(std::time(nullptr));
-	std::cout << "<" << name << "> I'm alive, i'm alive, i'm alive!!!!!!!\n";
+
+	std::cout << "\033[0;36m";
+	std::cout << "<Glados> FR4G-TRAP mode initiate\n";
 }
 
 FragTrap::~FragTrap()
 {
-	std::cout << "EXPLOSIOOOOOOOOONS!!!!!!\n";
+	std::cout << "\033[0;36m";
+	std::cout << "<Glados> FR4G-TRAP mode deactivated.\n";
 }
 
 //#######################
 //		MEMBER FUNCTION	#
 //#######################
-
-void	FragTrap::rangedAttack(std::string const& target)
-{
-	std::cout << this->Name << " use ranged attack against " << target << std::endl;
-	std::cout << this->Name << " inflicts " << this->RangeDamage << " damage\n";
-}
-
-void	FragTrap::meleeAttack(std::string const& target)
-{
-	std::cout << this->Name << " use melee attack against " << target << std::endl;
-	std::cout << this->Name << " inflicts " << this->MeleeDamage << " damage\n";
-}
-
-void	FragTrap::takeDamage(unsigned int amount)
-{
-	std::cout << this->Name << " lose " << amount - this->ArmorReduction << " HP\n";
-	this->HP -= (amount - this->ArmorReduction);
-	if (this->HP < 0)
-		this->HP = 0;
-}
-
-void	FragTrap::beRepaired(unsigned int amount)
-{
-	std::cout << this->Name << " gain " << amount << " HP\n";
-	this->HP += amount;
-	if (this->HP > 100)
-		this->HP = 100;
-}
 
 void	FragTrap::vaulthunter_dot_exe(std::string const &target)
 {
