@@ -38,15 +38,14 @@ int main()
 	AWeapon* pf = new PowerFist();
 	me->equip(pr);
 	std::cout << *me;
-	// me->equip(pf);
+	me->equip(pf);
+	me->attack(b);
+	std::cout << *me;
+	me->equip(pr);
 	std::cout << *me;
 	me->attack(b);
-	// std::cout << *me;
-	// me->equip(pr);
-	// std::cout << *me;
-	// me->attack(b);
-	// std::cout << *me;
-	// me->attack(b);
-	// std::cout << *me;
+	std::cout << *me;
+	me->attack(b);
+	std::cout << *me;
 	return 0;
 }

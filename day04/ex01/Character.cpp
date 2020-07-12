@@ -62,8 +62,7 @@ void	Character::equip(AWeapon* to_equip)
 
 void	Character::attack(Ennemy* ennemy)
 {
-	std::cout << this->weapon << " adress of weapon\n";
-	if (this->weapon && this->AP >= weapon->getAPcost())
+	if (this->weapon && this->AP >= this->weapon->getAPcost())
 	{
 		std::cout << this->getName();
 		std::cout << " attacks " << ennemy->getType();
