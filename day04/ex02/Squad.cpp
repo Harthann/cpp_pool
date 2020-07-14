@@ -1,6 +1,6 @@
 #include "Squad.hpp"
 
-Squad::Squad() : count(0), list(0)
+Squad::Squad() : list(0), count(0)
 {
 }
 
