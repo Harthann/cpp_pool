@@ -45,7 +45,10 @@ int main()
 	std::cout << *me;
 	me->attack(b);
 	std::cout << *me;
+	std::cout << b->getHP() << std::endl;
+	std::cout << b << std::endl;
 	me->attack(b);
 	std::cout << *me;
+	std::cout << b << std::endl;
 	return 0;
 }
