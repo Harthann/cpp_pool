@@ -6,7 +6,7 @@
 #    By: nieyraud <nieyraud@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/10 16:28:15 by nieyraud          #+#    #+#              #
-#    Updated: 2020/07/14 09:15:58 by nieyraud         ###   ########.fr        #
+#    Updated: 2020/07/14 09:15:43 by nieyraud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,8 +29,8 @@ rouge=\033[31m
 #####################
 NAME = a.out
 
-SRC_FILE = 	AssaultTerminator.cpp Squad.cpp TacticalMarine.cpp main.cpp
-
+SRC_FILE = 	AMateria.cpp Character.cpp Cure.cpp \
+			Ice.cpp MateriaSource.cpp main.cpp
 #############################
 #		DIRCTORIES PATH		#
 #############################
@@ -47,7 +47,8 @@ vpath %.c $(foreach dir, $(PATH), $(dir))
 SRC		= ${SRC_FILE}
 SRCS	= $(addprefix ${PATH}, ${SRC_FILE})
 OBJ		= ${addprefix ${OBJ_PATH}/, ${SRC_FILE:%.cpp=%.o}}
-INCLUDE	= AssaultTerminator.hpp ISpaceMarine.hpp ISquad.hpp Squad.hpp TacticalMarine.hpp
+INCLUDE	= AMateria.hpp Character.hpp Cure.hpp ICharacter.hpp \
+		IMateriaSource.hpp Ice.hpp MateriaSource.hpp
 
 #########################
 #			FLAGS		#
