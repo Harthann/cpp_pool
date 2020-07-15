@@ -1,7 +1,7 @@
 #include "Cure.hpp"
 #include "AMateria.hpp"
 
-Cure::Cure() : AMateria("Cure")
+Cure::Cure() : AMateria("cure")
 {}
 
 Cure::Cure(Cure const& base)
@@ -21,8 +21,8 @@ Cure::~Cure()
 
 void	Cure::use(ICharacter& target)
 {
-	std::cout << "*heals " << target.getName();
-	std::cout << "'s wounds* \n";
+	std::cout << "\033[0;32m*heals " << target.getName();
+	std::cout << "'s wounds* \n\033[0m";
 	this->setXP(this->getXP() + 10);
 }
 

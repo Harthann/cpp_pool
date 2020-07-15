@@ -22,8 +22,8 @@ Ice::~Ice()
 
 void Ice::use(ICharacter& target)
 {
-	std::cout << "*Shoots an ice bolt at " << target.getName();
-	std::cout << " *\n";
+	std::cout << "\033[31m*Shoots an ice bolt at " << target.getName();
+	std::cout << " *\n\033[0m";
 	this->setXP(this->getXP() + 10);
 }
 
