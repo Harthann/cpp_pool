@@ -15,10 +15,13 @@ class Span
 		unsigned int getSize(void) const;
 		void addNumber(int);
 		void addNumber(int, IT, IT);
+		void addNumber(IT, IT);
+		void addRandomNumber(unsigned int);
 		std::vector<int>::iterator begin();
 		std::vector<int>::iterator end();
 		unsigned int shortestSpan();
 		unsigned int longestSpan();
+		void print() const;
 		void test();
 	private:
 		std::vector<int> *v;

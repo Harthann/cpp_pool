@@ -3,21 +3,26 @@
 int main(void)
 {
 	Span sp = Span(5);
+	Span bigone = Span(10000);
 	sp.test();
+	bigone.test();
 	try {
-		sp.addNumber(5, sp.begin(), sp.end());
-		// sp.addNumber(3);
-		// sp.addNumber(17);
-		// sp.addNumber(9);
-		// sp.addNumber(11);
-		sp.test();
+		sp.addNumber(5);
+		sp.addNumber(3);
+		sp.addNumber(17);
+		sp.addNumber(9);
+		sp.addNumber(11);
+		sp.print();
+		bigone.addRandomNumber(5000);
+		bigone.addNumber(bigone.begin(), bigone.end());
+		std::cout << "Shortest span of sp: " << sp.shortestSpan() << std::endl;
+		std::cout << "Longest span of sp: " << sp.longestSpan() << std::endl;
+		std::cout << "Shortest span of bigone: " << bigone.shortestSpan() << std::endl;
+		std::cout << "Longest span of bigone: " << bigone.longestSpan() << std::endl;
 	}
-	catch (std::exception& e) {
-		std::cout << "Trying to add more number than initialy indicated\n";
-		std::cout << e.what();
+	catch (std::string const& str) {
+		std::cout << str;
 	}
-	std::cout << sp.shortestSpan() << std::endl;
-	std::cout << sp.longestSpan() << std::endl;
-
+	
 	return (0);
 }
