@@ -3,22 +3,34 @@
 
 #include <iostream>
 #include <stack>
-// #include <iterator>
+#include <iterator>
+#include "MutantStackIterator.hpp"
+
+// template<typename T> class MutantStackIterator;
 
 template<typename T>
 class MutantStack : public std::stack<T>
 {
 	public:
-		typedef T* iterator;
+		typedef MutantStackIterator<T> iterator;
 		iterator begin();
+		iterator end();
 	private:
-		iterator it;
 };
 
 template <typename T>
 typename MutantStack<T>::iterator MutantStack<T>::begin()
 {
-	return (this->it);
+	MutantStackIterator<T> const& msi = MutantStackIterator<T>(&this->top());
+	return (msi);
 }
+
+template <typename T>
+typename MutantStack<T>::iterator MutantStack<T>::end()
+{
+	MutantStackIterator<T> const& msi = MutantStackIterator<T>(&this->top() - this->size());
+	return (msi);
+}
+
 
 #endif
