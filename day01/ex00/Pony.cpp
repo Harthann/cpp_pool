@@ -1,8 +1,13 @@
 #include "Pony.hpp"
 #include <iostream>
 
-Pony::Pony() : size(148), weigth(150), color("marron")
+Pony::Pony(std::string name) : size(148), weigth(150), color("marron"), name(name)
 {}
+
+Pony::~Pony()
+{
+	std::cout << this->name << " has been deleted\n";
+}
 
 int		Pony::getSize()
 {
@@ -17,6 +22,11 @@ int		Pony::getWeigth()
 std::string	Pony::getColor()
 {
 	return(this->color);
+}
+
+std::string	Pony::getName()
+{
+	return(this->name);
 }
 
 void	Pony::chgweigth(int nb)

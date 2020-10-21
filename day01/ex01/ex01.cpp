@@ -1,4 +1,5 @@
 #include <iostream>
+
 void	memoryLeak()
 {
 	std::string* panthere = new std::string("String panthere");
@@ -10,7 +11,6 @@ void	memoryLeak()
 int		main(void)
 {
 	memoryLeak();
-	while(1)
-	;
+	getchar();
 	return(0);
 }
