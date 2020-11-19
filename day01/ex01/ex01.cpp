@@ -11,6 +11,5 @@ void	memoryLeak()
 int		main(void)
 {
 	memoryLeak();
-	getchar();
 	return(0);
 }

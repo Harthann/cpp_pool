@@ -1,8 +1,11 @@
-NAME= replace
+NAME= a.out
 
 SRCS= main.cpp
 
-ALL_SRCS= $(SRCS)
+CLASSES_SRCS= Pony.cpp
+CLASSES_HEADERS= $(CLASSES_SRCS:%.cpp=%.hpp)
+
+ALL_SRCS= $(CLASSES_SRCS) $(SRCS)
 OBJS= $(ALL_SRCS:%.cpp=%.o)
 
 CXX= clang++
@@ -12,6 +15,9 @@ $(NAME): all
 
 all: $(OBJS)
 	$(CXX) $(CXXFLAGS) $(OBJS) -I$(INC_DIR) -o $(NAME)
+
+print:
+	@echo "SRCS are : " $(ALL_SRCS) " and CLASSES_HEADERS are : " $(CLASSES_HEADERS)
 
 %.o : %.cpp
 	$(CXX) $(CXXFLAGS) -c -I$(INC_DIR) $< -o $@

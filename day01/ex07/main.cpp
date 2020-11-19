@@ -6,36 +6,34 @@ std::string	*get_file(char *path)
 {
 	std::ifstream myfile;
 	std::string *tmp;
-	// std::string mem;
-	char mem[32];
+	char mem;
 
 	myfile.open(path);
 	tmp = new std::string;
-	mem[31] = '\0';
 	if (myfile.is_open())
 	{
-		myfile.read(mem, 30);
-		if (!myfile)
-			tmp->append(mem);
-		while (myfile)
+		myfile.read(&mem,1);
+		do
 		{
-			tmp->append(mem);
-			myfile.read(mem, 30);
-		}
+			tmp->append(1, mem);
+			mem = 0;
+			myfile.read(&mem,1);
+		} while (myfile);
+		tmp->append(1, mem);
 	}
 	myfile.close();
 	return (tmp);
 }
 
-void	change_occurence(std::string *mem, char *s1, char *s2)
+void	change_occurence(std::string *mem, std::string s1, std::string s2)
 {
 	std::size_t location;
 
 	location = mem->find(s1);
 	while (location != -1)
 	{
-		mem->replace(location, strlen(s1), s2);
-		location = mem->find(s1, location + strlen(s2));
+		mem->replace(location, s1.length(), s2);
+		location = mem->find(s1, location + s2.length());
 	}
 }
 

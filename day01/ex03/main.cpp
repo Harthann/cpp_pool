@@ -1,6 +1,7 @@
 #include "ZombieEvent.hpp"
 #include "Horde.hpp"
 #include <iostream>
+#include <ctime>
 
 Zombie	*newZombie(std::string name)
 {

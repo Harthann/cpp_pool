@@ -1,8 +1,11 @@
-NAME= replace
+NAME= a.out
 
 SRCS= main.cpp
 
-ALL_SRCS= $(SRCS)
+CLASSES_SRCS= HumanA.cpp HumanB.cpp Weapon.cpp
+CLASSES_HEADERS= $(CLASSES_SRCS:%.cpp=%.hpp)
+
+ALL_SRCS= $(CLASSES_SRCS) $(SRCS)
 OBJS= $(ALL_SRCS:%.cpp=%.o)
 
 CXX= clang++

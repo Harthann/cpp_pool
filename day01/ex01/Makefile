@@ -1,6 +1,6 @@
-NAME= replace
+NAME= a.out
 
-SRCS= main.cpp
+SRCS= ex01.cpp
 
 ALL_SRCS= $(SRCS)
 OBJS= $(ALL_SRCS:%.cpp=%.o)
