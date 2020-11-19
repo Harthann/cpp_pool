@@ -37,5 +37,6 @@ int	main(void)
 	v_horde = new Horde(50);
 	v_horde->setType(test.getType());
 	v_horde->announce();
+	delete v_horde;
 	return (0);
 }

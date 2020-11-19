@@ -57,6 +57,7 @@ int		main(int ac, char **av)
 		mem = get_file(av[1]);
 		change_occurence(mem, av[2], av[3]);
 		wright_file(mem, av[1]);
+		delete mem;
 	}
 	else
 		std::cout << "Wrong argument number\n";

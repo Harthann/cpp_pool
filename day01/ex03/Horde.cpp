@@ -8,7 +8,7 @@ Horde::Horde(int nb)
 	int i;
 
 	i = 0;
-	this->group = new Zombie[nb]();
+	this->group = new Zombie[nb];
 	while (i < nb)
 	{
 		this->group[i].addName(randomName());
@@ -19,7 +19,7 @@ Horde::Horde(int nb)
 
 Horde::~Horde()
 {
-	delete this->group;
+	delete [] this->group;
 }
 
 void	Horde::announce()
