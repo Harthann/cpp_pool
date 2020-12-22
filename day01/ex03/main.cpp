@@ -1,16 +1,6 @@
-#include "ZombieEvent.hpp"
-#include "Horde.hpp"
+#include "ZombieHorde.hpp"
 #include <iostream>
 #include <ctime>
-
-Zombie	*newZombie(std::string name)
-{
-	class Zombie *ret;
-	
-	ret = new Zombie();
-	ret->addName(name);
-	return (ret);
-}
 
 std::string randomName()
 {
@@ -26,16 +16,14 @@ std::string randomName()
 
 int	main(void)
 {
-	class ZombieEvent test;
-	class Horde *v_horde;
+	class ZombieHorde *v_horde;
 	std::string str;
 	std::srand(std::time(nullptr));
 
 	std::cout << "Choisissez un type pour vos zombie\n";
 	std::cin >> str;
-	test.setZombieType(str);
-	v_horde = new Horde(50);
-	v_horde->setType(test.getType());
+	v_horde = new ZombieHorde(50);
+	v_horde->setType(str);
 	v_horde->announce();
 	delete v_horde;
 	return (0);

@@ -9,7 +9,7 @@ ALL_SRCS= $(CLASSES_SRCS) $(SRCS)
 OBJS= $(ALL_SRCS:%.cpp=%.o)
 
 CXX= clang++
-CXFLAGS= -Wall -Werror -Wextra
+CXXFLAGS= -Wall -Werror -Wextra
 INC_DIR=.
 $(NAME): all
 

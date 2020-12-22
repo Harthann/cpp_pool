@@ -6,15 +6,7 @@
 class Brain
 {
 	public:
-		void	setNeuronnes(int nb);
-		void	setIQ(char nb);
-		void	setMasse(int nb);
-		std::string identify();
-
-	private:
-		int	neuronnes;
-		int	masse;
-		char iq;
+		std::string identify() const;
 };
 
 #endif

@@ -6,7 +6,7 @@ ALL_SRCS= $(SRCS)
 OBJS= $(ALL_SRCS:%.cpp=%.o)
 
 CXX= clang++
-CXFLAGS= -Wall -Werror -Wextra
+CXXFLAGS= -Wall -Werror -Wextra
 INC_DIR=.
 $(NAME): all
 
@@ -17,10 +17,10 @@ all: $(OBJS)
 	$(CXX) $(CXXFLAGS) -c -I$(INC_DIR) $< -o $@
 
 clean:
-	rm $(OBJS)
+	rm -rf $(OBJS)
 
 fclean: clean
-	rm $(NAME)
+	rm -rf $(NAME)
 
 re: fclean all
 

@@ -44,8 +44,8 @@ void	FragTrap::beRepaired(unsigned int amount)
 {
 	std::cout << this->Name << " gain " << amount << " HP\n";
 	this->HP += amount;
-	if (this->HP > 100)
-		this->HP = 100;
+	if (this->HP > this->MaxHP)
+		this->HP = this->MaxHP;
 }
 
 void	FragTrap::vaulthunter_dot_exe(std::string const &target)
@@ -54,6 +54,8 @@ void	FragTrap::vaulthunter_dot_exe(std::string const &target)
 
 	if (this->Energy < 25)
 		std::cout << "Not enough power\n";
+	else if (this->Level < 2)
+		std::cout << "Skill not learned yet, need to level up\n";
 	else
 	{
 		tmp = std::rand() % 5;

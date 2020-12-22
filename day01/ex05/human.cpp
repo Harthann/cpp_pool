@@ -9,16 +9,10 @@ Human::Human() : humans_brain()
 
 std::string Human::identify()
 {
-	unsigned long int addr;
-	std::stringstream stream;
-
-	addr = (unsigned long int)&this->humans_brain;
-
-	stream << "0x" << std::hex << addr;
-	return (stream.str());
+	return (this->humans_brain.identify());
 }
 
-Brain Human::getBrain()
+const Brain & Human::getBrain()
 {
 	return (this->humans_brain);
 }

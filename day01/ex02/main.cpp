@@ -3,21 +3,12 @@
 #include <iostream>
 #include <ctime>
 
-Zombie	*newZombie(std::string name)
-{
-	class Zombie *ret;
-	
-	ret = new Zombie("Unknown", name);
-	return (ret);
-}
-
 std::string randomName()
 {
 	int random;
 	int i;
 	std::string name;
 
-	std::srand(std::time(nullptr));
 	i = 0;
 	random = std::rand() % 20;
 	while (i < random)
@@ -43,11 +34,11 @@ int	main(void)
 	class ZombieEvent test;
 	std::string str;
 
+	std::srand(std::time(nullptr));
 	std::cout << "Choisissez un type pour vos zombie\n";
 	std::cin >> str;
 	test.setZombieType(str);
-	patient_zero = newZombie("Harold");
-	patient_zero->addType(test.getType());
+	patient_zero = test.newZombie("Harold");
 	patient_zero->advert();
 	delete(patient_zero);
 	patient_zero = randomChump(test.getType());

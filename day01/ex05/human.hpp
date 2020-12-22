@@ -8,7 +8,7 @@ class Human
 	public:
 		Human();
 		std::string identify();
-		Brain getBrain();
+		const Brain & getBrain();
 	private:
 		const Brain humans_brain;
 };

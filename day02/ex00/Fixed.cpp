@@ -1,9 +1,14 @@
 #include "Fixed.hpp"
 #include <iostream>
 
-Fixed::Fixed(int number) : fix_point(number)
+Fixed::Fixed(const int number) : fix_point(number)
 {
 	std::cout << "Default contructor called\n";
+}
+
+Fixed::Fixed(const float number)
+{
+	this->fix_point = (int)(number * (1 << this->bits));
 }
 
 Fixed::Fixed(Fixed const &copy)

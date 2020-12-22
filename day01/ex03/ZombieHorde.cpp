@@ -1,9 +1,9 @@
-#include "Horde.hpp"
+#include "ZombieHorde.hpp"
 #include <iostream>
 
 std::string randomName();
 
-Horde::Horde(int nb)
+ZombieHorde::ZombieHorde(int nb)
 {
 	int i;
 
@@ -17,15 +17,14 @@ Horde::Horde(int nb)
 	this->number = nb;
 }
 
-Horde::~Horde()
+ZombieHorde::~ZombieHorde()
 {
 	delete [] this->group;
 }
 
-void	Horde::announce()
+void	ZombieHorde::announce()
 {
 	int i;
-	int max;
 
 	i = 0;
 	while (i < this->number)
@@ -35,7 +34,7 @@ void	Horde::announce()
 	}
 }
 
-void	Horde::setType(std::string str)
+void	ZombieHorde::setType(std::string str)
 {
 	int i;
 

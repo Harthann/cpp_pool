@@ -4,7 +4,8 @@
 class Fixed
 {
 	public:
-		Fixed(int number = 0);
+		Fixed(const int number = 0);
+		Fixed(const float number);
 		Fixed(Fixed const &copy);
 		~Fixed();
 		int		getRawBits() const;

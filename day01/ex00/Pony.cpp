@@ -1,7 +1,7 @@
 #include "Pony.hpp"
 #include <iostream>
 
-Pony::Pony(std::string name) : size(148), weigth(150), color("marron"), name(name)
+Pony::Pony(std::string name) : name(name), size(148), weigth(150), color("marron")
 {}
 
 Pony::~Pony()

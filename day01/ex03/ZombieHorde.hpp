@@ -1,14 +1,19 @@
+#ifndef ZOMBIEHORDE_HPP
+#define ZOMBIEHORDE_HPP
+
 #include <iostream>
 #include "Zombie.hpp"
 
-class Horde
+class ZombieHorde
 {
 	public:
-		Horde(int nb = 1);
-		~Horde();
+		ZombieHorde(int nb = 1);
+		~ZombieHorde();
 		void	announce();
 		void	setType(std::string str);
 	private:
 		class Zombie* group;
 		int number;
 };
+
+#endif

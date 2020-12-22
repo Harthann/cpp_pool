@@ -2,7 +2,7 @@ NAME= a.out
 
 SRCS= main.cpp
 
-CLASSES_SRCS= Pony.cpp
+CLASSES_SRCS= FragTrap.cpp ScavTrap.cpp ClapTrap.cpp NinjaTrap.cpp
 CLASSES_HEADERS= $(CLASSES_SRCS:%.cpp=%.hpp)
 
 ALL_SRCS= $(CLASSES_SRCS) $(SRCS)
@@ -23,10 +23,10 @@ print:
 	$(CXX) $(CXXFLAGS) -c -I$(INC_DIR) $< -o $@
 
 clean:
-	rm $(OBJS)
+	rm -rf $(OBJS)
 
 fclean: clean
-	rm $(NAME)
+	rm -rf $(NAME)
 
 re: fclean all
 
