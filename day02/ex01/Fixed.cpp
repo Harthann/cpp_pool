@@ -6,23 +6,31 @@
 //#####################
 
 Fixed::Fixed() : fix_point(0)
-{}
+{
+	std::cout << "Default constructor called\n";
+}
 
 Fixed::Fixed(const int number) : fix_point(number << this->bits)
-{}
+{
+	std::cout << "Int constructor called\n";
+}
 
 Fixed::Fixed(const float number)
 {
-		this->fix_point = (int) (number * (1 << this->bits));
+	std::cout << "Float constructor called\n";
+	this->fix_point = roundf(number * (1 << this->bits));
 }
 
 Fixed::Fixed(Fixed const &copy)
 {
+	std::cout << "Copy constructor called\n";
 	*this = copy;
 }
 
 Fixed::~Fixed()
-{}
+{
+	std::cout << "Destructor called\n";
+}
 
 //#####################
 //##	GET MEMBER	###
@@ -54,6 +62,7 @@ float	Fixed::toFloat(void) const
 
 Fixed&	Fixed::operator=(const Fixed &base)
 {
+	std::cout << "Assignation operator called\n";
 	fix_point = base.getRawBits();
 	return (*this);
 }
