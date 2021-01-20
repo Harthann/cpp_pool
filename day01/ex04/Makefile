@@ -6,7 +6,7 @@ ALL_SRCS= $(SRCS)
 OBJS= $(ALL_SRCS:%.cpp=%.o)
 
 CXX= clang++
-CXXFLAGS= -Wall -Werror -Wextra
+CXXFLAGS= -Wall -Werror -Wextra -std=c++98
 INC_DIR=.
 $(NAME): all
 

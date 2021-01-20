@@ -1,11 +1,13 @@
 #include "Zombie.hpp"
 #include <iostream>
 
-Zombie::Zombie() : type("Unknown"), name("Unknown")
+Zombie::Zombie(std::string type, std::string name) : type(type), name(name)
 {}
 
-// Zombie::Zombie(std::string type, std::string name) : type(type), name(name)
-// {}
+Zombie::~Zombie()
+{
+	std::cout << this->name << " has been removed\n";
+}
 
 void	Zombie::advert()
 {

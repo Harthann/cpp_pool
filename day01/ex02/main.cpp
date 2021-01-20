@@ -2,6 +2,8 @@
 #include "ZombieEvent.hpp"
 #include <iostream>
 #include <ctime>
+#include <stdlib.h>
+#include <stdio.h>
 
 std::string randomName()
 {
@@ -34,7 +36,7 @@ int	main(void)
 	class ZombieEvent test;
 	std::string str;
 
-	std::srand(std::time(nullptr));
+	std::srand(std::time(NULL));
 	std::cout << "Choisissez un type pour vos zombie\n";
 	std::cin >> str;
 	test.setZombieType(str);

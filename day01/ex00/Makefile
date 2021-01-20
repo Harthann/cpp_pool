@@ -9,7 +9,7 @@ ALL_SRCS= $(CLASSES_SRCS) $(SRCS)
 OBJS= $(ALL_SRCS:%.cpp=%.o)
 
 CXX= clang++
-CXXFLAGS= -Wall -Werror -Wextra
+CXXFLAGS= -Wall -Werror -Wextra -std=c++98
 INC_DIR=.
 $(NAME): all
 
@@ -23,10 +23,10 @@ print:
 	$(CXX) $(CXXFLAGS) -c -I$(INC_DIR) $< -o $@
 
 clean:
-	rm $(OBJS)
+	rm -rf $(OBJS)
 
 fclean: clean
-	rm $(NAME)
+	rm -rf $(NAME)
 
 re: fclean all
 

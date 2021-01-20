@@ -21,20 +21,28 @@ std::string	*get_file(char *path)
 		} while (myfile);
 		tmp->append(1, mem);
 	}
+	else
+		std::cerr << "file not found\n";
 	myfile.close();
 	return (tmp);
 }
 
-void	change_occurence(std::string *mem, std::string s1, std::string s2)
+int	change_occurence(std::string *mem, std::string s1, std::string s2)
 {
 	std::size_t location;
 
+	if (s1.empty() || s2.empty())
+	{
+		std::cerr << "String can't be empty\n";
+		return (1);
+	}
 	location = mem->find(s1);
-	while (location != -1)
+	while (location != std::string::npos)
 	{
 		mem->replace(location, s1.length(), s2);
 		location = mem->find(s1, location + s2.length());
 	}
+	return (0);
 }
 
 void	wright_file(std::string *mem, char *file)
@@ -44,7 +52,7 @@ void	wright_file(std::string *mem, char *file)
 
 	name = file;
 	name.append(".replace");
-	new_file.open(name);
+	new_file.open(name.c_str());
 	new_file << *mem;
 }
 
@@ -55,7 +63,8 @@ int		main(int ac, char **av)
 	if (ac == 4)
 	{
 		mem = get_file(av[1]);
-		change_occurence(mem, av[2], av[3]);
+		if (change_occurence(mem, av[2], av[3]))
+			return (0);
 		wright_file(mem, av[1]);
 		delete mem;
 	}

@@ -3,7 +3,8 @@
 class Zombie
 {
 	public:
-		Zombie();
+		Zombie(std::string type = "Unknown", std::string name = "Unknown");
+		~Zombie();
 		void	advert();
 		
 		void	addType(std::string str);
