@@ -12,7 +12,9 @@
 class ScavTrap : public ClapTrap
 {
 	public:
-		ScavTrap(std::string& name);
+		ScavTrap(std::string name = "Unknown");
+		ScavTrap(const ScavTrap &base);
+		ScavTrap &operator=(const ScavTrap &base);
 		~ScavTrap();
 		void	challengerNewcomer(const std::string& target);
 };

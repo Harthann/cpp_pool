@@ -11,7 +11,9 @@
 class ScavTrap
 {
 	public:
-		ScavTrap(std::string name);
+		ScavTrap(std::string name = "Unknown");
+		ScavTrap(const ScavTrap & base);
+		ScavTrap &operator=(const ScavTrap &base);
 		~ScavTrap();
 		void	rangedAttack(std::string const& target);
 		void	meleeAttack(std::string const& target);
@@ -22,6 +24,7 @@ class ScavTrap
 		int HP;
 		int MaxHP;
 		int Energy;
+		int MaxEnergy;
 		int Level;
 		std::string Name;
 		int MeleeDamage;

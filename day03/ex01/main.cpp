@@ -1,12 +1,28 @@
 #include "FragTrap.hpp"
 #include "ScavTrap.hpp"
 
+void	test_coplien(FragTrap frag, ScavTrap scav)
+{
+	FragTrap clap;
+	ScavTrap scav2;
+
+	clap = frag;
+	scav2 = scav;
+}
+
+
 int		main(void)
 {
 	std::string scav_n = "SC4V-TP";
 	std::string frag_n = "FR4G-TP";
 	FragTrap frag(frag_n);
 	ScavTrap scav(scav_n);
+
+
+
+	std::cout << "\033[1;39m======\tTest Coplien\t======\n";
+	test_coplien(frag, scav);
+	std::cout << "\033[1;39m======\tTest Classe\t======\n";
 
 	frag.meleeAttack(scav_n);
 	scav.takeDamage(30);

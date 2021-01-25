@@ -2,6 +2,11 @@
 	"files.associations": {
 		"ostream": "cpp",
 		"iosfwd": "cpp",
-		"vector": "cpp"
+		"vector": "cpp",
+		"__locale": "cpp",
+		"system_error": "cpp",
+		"bitset": "cpp",
+		"iterator": "cpp",
+		"memory": "cpp"
 	}
 }

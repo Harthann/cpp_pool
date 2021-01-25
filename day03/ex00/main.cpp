@@ -1,8 +1,20 @@
 #include "FragTrap.hpp"
 
+void	test_coplien(FragTrap frag)
+{
+	FragTrap clap;
+
+	clap = frag;
+}
+
 int		main(void)
 {
 	FragTrap clap("CL4P-TP");
+
+
+	std::cout << "======\tTest Coplien\t======\n";
+	test_coplien(clap);
+	std::cout << "======\tTest Classe\t======\n";
 
 	clap.meleeAttack("Random ship");
 	clap.rangedAttack("Random ship");

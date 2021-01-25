@@ -8,12 +8,47 @@ FragTrap::FragTrap(std::string name) :
 HP(100), MaxHP(100), Energy(100), MaxEnergy(100), Level(1), Name(name), MeleeDamage(30), RangeDamage(20), ArmorReduction(5)
 {
 	std::srand(std::time(NULL));
+	std::cout << "\033[0;32m";
 	std::cout << "<" << name << "> I'm alive, i'm alive, i'm alive!!!!!!!\n";
+	std::cout << "\033[0;39m";
+}
+
+FragTrap::FragTrap(const FragTrap& base)
+{
+	std::cout << "\033[0;32m";
+	this->HP = base.HP;
+	this->MaxHP = base.MaxHP;
+	this->Energy = base.Energy;
+	this->MaxEnergy = base.MaxEnergy;
+	this->Name = base.Name;
+	this->MeleeDamage = base.MeleeDamage;
+	this->RangeDamage = base.RangeDamage;
+	this->ArmorReduction = base.ArmorReduction;
+	std::cout << "<" << this->Name << "> I'm a copy!\n";
+	std::cout << "\033[0;39m";
+}
+
+FragTrap &FragTrap::operator=(const FragTrap& base)
+{
+	std::cout << "\033[0;32m";
+	this->HP = base.HP;
+	this->MaxHP = base.MaxHP;
+	this->Energy = base.Energy;
+	this->MaxEnergy = base.MaxEnergy;
+	this->Name = base.Name;
+	this->MeleeDamage = base.MeleeDamage;
+	this->RangeDamage = base.RangeDamage;
+	this->ArmorReduction = base.ArmorReduction;
+	std::cout << "<" << this->Name << "> I'm a assignated!\n";
+	std::cout << "\033[0;39m";
+	return (*this);
 }
 
 FragTrap::~FragTrap()
 {
+	std::cout << "\033[0;32m";
 	std::cout << "EXPLOSIOOOOOOOOONS!!!!!!\n";
+	std::cout << "\033[0;39m";
 }
 
 //#######################
@@ -22,32 +57,41 @@ FragTrap::~FragTrap()
 
 void	FragTrap::LevelUP()
 {
+	std::cout << "\033[0;32m";
 	this->Level++;
 	std::cout << this->Name << " has leveled up to level : " << this->Level << std::endl;
+	std::cout << "\033[0;39m";
 }
 
 void	FragTrap::rangedAttack(std::string const& target)
 {
+	std::cout << "\033[0;32m";
 	std::cout << this->Name << " use ranged attack against " << target << std::endl;
 	std::cout << this->Name << " inflicts " << this->RangeDamage << " damage\n";
+	std::cout << "\033[0;39m";
 }
 
 void	FragTrap::meleeAttack(std::string const& target)
 {
+	std::cout << "\033[0;32m";
 	std::cout << this->Name << " use melee attack against " << target << std::endl;
 	std::cout << this->Name << " inflicts " << this->MeleeDamage << " damage\n";
+	std::cout << "\033[0;39m";
 }
 
 void	FragTrap::takeDamage(unsigned int amount)
 {
+	std::cout << "\033[0;32m";
 	std::cout << this->Name << " lose " << amount - this->ArmorReduction << " HP\n";
 	this->HP -= (amount - this->ArmorReduction);
 	if (this->HP < 0)
 		this->HP = 0;
+	std::cout << "\033[0;39m";
 }
 
 void	FragTrap::beRepaired(unsigned int amount)
 {
+	std::cout << "\033[0;32m";
 	std::cout << this->Name << " gain " << amount << " HP\n";
 	this->HP += amount;
 	if (this->HP > this->MaxHP)
@@ -57,12 +101,14 @@ void	FragTrap::beRepaired(unsigned int amount)
 	if (this->Energy > this->MaxEnergy)
 		this->Energy = this->MaxEnergy;
 	std::cout << this->Name << " has now : " << this->Energy << "Energy\n";
+	std::cout << "\033[0;39m";
 }
 
 void	FragTrap::vaulthunter_dot_exe(std::string const &target)
 {
 	int tmp;
 
+	std::cout << "\033[0;32m";
 	if (this->Energy < 25)
 		std::cout << "Not enough power\n";
 	else if (this->Level < 2)
@@ -101,4 +147,5 @@ void	FragTrap::vaulthunter_dot_exe(std::string const &target)
 	this->Energy -= 25;
 	if (this->Energy < 0)
 		this->Energy = 0;
+	std::cout << "\033[0;39m";
 }

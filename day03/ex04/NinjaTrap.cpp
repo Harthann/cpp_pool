@@ -4,17 +4,41 @@
 //#		CONSTRUCTOR/DESTRUCTOR	#
 //###############################
 
-NinjaTrap::NinjaTrap(std::string name) : ClapTrap(name)
+NinjaTrap::NinjaTrap(std::string name) : ClapTrap(name, 60, 60, 120, 1, 60, 5, 0)
 {
-	this->HP = 60;
-	this->MaxHP = 60;
-	this->Energy = 120;
-	this->MaxEnergy = 120;
-	this->MeleeDamage = 60;
-	this->RangeDamage = 5;
-	this->ArmorReduction = 0;
 	std::cout << "\033[0;34m";
 	std::cout << "<" << name << "> NINJA-TRAP PROCESS LAUNCHING!\n";
+}
+
+NinjaTrap::NinjaTrap(const NinjaTrap & base)
+{
+	std::cout << "\033[0;34m";
+	this->HP = base.HP;
+	this->MaxHP = base.MaxHP;
+	this->Energy = base.Energy;
+	this->MaxEnergy = base.MaxEnergy;
+	this->Name = base.Name;
+	this->MeleeDamage = base.MeleeDamage;
+	this->RangeDamage = base.RangeDamage;
+	this->ArmorReduction = base.ArmorReduction;
+	std::cout << "<" << this->Name << "> I'm a copy!\n";
+	std::cout << "\033[0;39m";
+}
+
+NinjaTrap &NinjaTrap::operator=(const NinjaTrap& base)
+{
+	std::cout << "\033[0;34m";
+	this->HP = base.HP;
+	this->MaxHP = base.MaxHP;
+	this->Energy = base.Energy;
+	this->MaxEnergy = base.MaxEnergy;
+	this->Name = base.Name;
+	this->MeleeDamage = base.MeleeDamage;
+	this->RangeDamage = base.RangeDamage;
+	this->ArmorReduction = base.ArmorReduction;
+	std::cout << "<" << this->Name << "> I'm a assignated!\n";
+	std::cout << "\033[0;39m";
+	return (*this);
 }
 
 NinjaTrap::~NinjaTrap()
@@ -22,7 +46,6 @@ NinjaTrap::~NinjaTrap()
 	std::cout << "\033[0;34m";
 	std::cout << "<" << this->Name << "> NINJA-TRAP mode deactivated.\n";
 }
-
 
 //###############################
 //#		MEMBER FUNCTION			#

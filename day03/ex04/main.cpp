@@ -4,16 +4,37 @@
 #include "NinjaTrap.hpp"
 #include "SuperTrap.hpp"
 
+void	test_coplien(FragTrap frag, ScavTrap scav, ClapTrap clap, NinjaTrap ninja, SuperTrap super)
+{
+	FragTrap frag2;
+	ScavTrap scav2;
+	ClapTrap clap2;
+	NinjaTrap ninja2;
+	SuperTrap super2;
+
+	frag2 = frag;
+	scav2 = scav;
+	clap2 = clap;
+	ninja2 = ninja;
+	super2 = super;
+}
+
 int		main(void)
 {
-	std::string clap_n = "FR4G-TP";
+	std::string frag_n = "FR4G-TP";
+	std::string clap_n = "CL4P-TP";
 	std::string ninja_n = "NINJ4-TP";
 	std::string scav_n = "SC4V-TP";
 	std::string super_n = "SUPER-TP";
-	FragTrap clap(clap_n);
+	FragTrap frag(frag_n);
+	ClapTrap clap(clap_n);
 	ScavTrap scav(scav_n);
 	NinjaTrap ninja(ninja_n);
 	SuperTrap super(super_n);
+
+	std::cout << "\033[1;39m======\tTest Coplien\t======\n";
+	test_coplien(frag, scav, clap, ninja, super);
+	std::cout << "\033[1;39m======\tTest Classe\t======\n";
 
 	std::cout << std::endl;
 	std::cout << "========= VAULT HUNTER EXE : =========\n\n";

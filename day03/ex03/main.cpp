@@ -3,6 +3,19 @@
 #include "ClapTrap.hpp"
 #include "NinjaTrap.hpp"
 
+void	test_coplien(FragTrap frag, ScavTrap scav, ClapTrap clap, NinjaTrap ninja)
+{
+	FragTrap frag2;
+	ScavTrap scav2;
+	ClapTrap clap2;
+	NinjaTrap ninja2;
+
+	frag2 = frag;
+	scav2 = scav;
+	clap2 = clap;
+	ninja2 = ninja;
+}
+
 int		main(void)
 {
 	std::string scav_n = "SC4V-TP";
@@ -13,6 +26,10 @@ int		main(void)
 	FragTrap frag(frag_n);
 	ScavTrap scav(scav_n);
 	NinjaTrap ninja(ninja_n);
+
+	std::cout << "\033[1;39m======\tTest Coplien\t======\n";
+	test_coplien(frag, scav, clap, ninja);
+	std::cout << "\033[1;39m======\tTest Classe\t======\n";
 
 	std::cout << "\n\n======= FIGHT =======\n";
 

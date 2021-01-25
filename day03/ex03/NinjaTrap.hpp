@@ -9,7 +9,9 @@
 class NinjaTrap : public ClapTrap
 {
 	public:
-		NinjaTrap(std::string name);
+		NinjaTrap(std::string name = "Unknown");
+		NinjaTrap(const NinjaTrap & base);
+		NinjaTrap &operator=(const NinjaTrap& base);
 		~NinjaTrap();
 		void	ninjaShoebox(FragTrap& target);
 		void	ninjaShoebox(ScavTrap& target);

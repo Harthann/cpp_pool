@@ -6,10 +6,12 @@
 #include "FragTrap.hpp"
 #include "ScavTrap.hpp"
 
-class NinjaTrap : public virtual ClapTrap
+class NinjaTrap : virtual public ClapTrap
 {
 	public:
-		NinjaTrap(std::string name);
+		NinjaTrap(std::string name = "Unknown");
+		NinjaTrap(const NinjaTrap & base);
+		NinjaTrap &operator=(const NinjaTrap& base);
 		~NinjaTrap();
 
 		void	meleeAttack(const std::string& target) const;

@@ -9,7 +9,9 @@
 class FragTrap
 {
 	public:
-		FragTrap(std::string name);
+		FragTrap(std::string name = "Unknown");
+		FragTrap(const FragTrap& base);
+		FragTrap &operator=(const FragTrap &base);
 		~FragTrap();
 		void	LevelUP();
 		void	rangedAttack(std::string const& target);

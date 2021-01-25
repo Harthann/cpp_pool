@@ -5,18 +5,51 @@
 //###########################
 
 ScavTrap::ScavTrap(std::string name) :
-HP(100), MaxHP(100), Energy(100), Level(1), Name(name), MeleeDamage(20), RangeDamage(15), ArmorReduction(3)
+HP(100), MaxHP(100), Energy(100), MaxEnergy(100), Level(1), Name(name), MeleeDamage(20), RangeDamage(15), ArmorReduction(3)
 {
 	std::srand(std::time(NULL));
 
 	std::cout << "\033[0;35m";
 	std::cout << "<" << name << "> Oh Hello there! My name is " << name << std::endl;
+	std::cout << "\033[0;39m";
+}
+
+ScavTrap::ScavTrap(const ScavTrap & base)
+{
+	std::cout << "\033[0;35m";
+	this->HP = base.HP;
+	this->MaxHP = base.MaxHP;
+	this->Energy = base.Energy;
+	this->MaxEnergy = base.MaxEnergy;
+	this->Name = base.Name;
+	this->MeleeDamage = base.MeleeDamage;
+	this->RangeDamage = base.RangeDamage;
+	this->ArmorReduction = base.ArmorReduction;
+	std::cout << "<" << this->Name << "> I'm a copy!\n";
+	std::cout << "\033[0;39m";
+}
+
+ScavTrap &ScavTrap::operator=(const ScavTrap& base)
+{
+	std::cout << "\033[0;35m";
+	this->HP = base.HP;
+	this->MaxHP = base.MaxHP;
+	this->Energy = base.Energy;
+	this->MaxEnergy = base.MaxEnergy;
+	this->Name = base.Name;
+	this->MeleeDamage = base.MeleeDamage;
+	this->RangeDamage = base.RangeDamage;
+	this->ArmorReduction = base.ArmorReduction;
+	std::cout << "<" << this->Name << "> I'm a assignated!\n";
+	std::cout << "\033[0;39m";
+	return (*this);
 }
 
 ScavTrap::~ScavTrap()
 {
 	std::cout << "\033[0;35m";
 	std::cout << "<" << this->Name << "> HOW IS IT POSSIBLE!\n";
+	std::cout << "\033[0;39m";
 }
 
 //#######################
@@ -34,6 +67,7 @@ void	ScavTrap::rangedAttack(std::string const& target)
 	}
 	else
 		std::cout << this->Name << " doesn't have enough energy to attack\n";
+	std::cout << "\033[0;39m";
 }
 
 void	ScavTrap::meleeAttack(std::string const& target)
@@ -47,6 +81,7 @@ void	ScavTrap::meleeAttack(std::string const& target)
 	}
 	else
 		std::cout << this->Name << " doesn't have enough energy to attack\n";
+	std::cout << "\033[0;39m";
 }
 
 void	ScavTrap::takeDamage(unsigned int amount)
@@ -56,6 +91,7 @@ void	ScavTrap::takeDamage(unsigned int amount)
 	this->HP -= (amount - this->ArmorReduction);
 	if (this->HP < 0)
 		this->HP = 0;
+	std::cout << "\033[0;39m";
 }
 
 void	ScavTrap::beRepaired(unsigned int amount)
@@ -66,6 +102,11 @@ void	ScavTrap::beRepaired(unsigned int amount)
 	if (this->HP > this->MaxHP)
 		this->HP = this->MaxHP;
 	std::cout << this->Name << " have now " << this->HP << " HP\n";
+	this->Energy += amount;
+	if (this->Energy > this->MaxEnergy)
+		this->Energy = this->MaxEnergy;
+	std::cout << this->Name << " have now " << this->Energy << " Energy\n";
+	std::cout << "\033[0;39m";
 }
 
 void	ScavTrap::challengerNewcomer(const std::string& target)
@@ -102,4 +143,5 @@ void	ScavTrap::challengerNewcomer(const std::string& target)
 		std::cout << "Thanks to you " << target << " i have now level up to level : " << this->Level << std::endl;
 
 	}
+	std::cout << "\033[0;39m";
 }

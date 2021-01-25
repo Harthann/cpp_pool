@@ -11,6 +11,34 @@ HP(100), MaxHP(100), Energy(100), MaxEnergy(100), Level(1), Name(name), MeleeDam
 	std::cout << "<" << name << "> I'm alive, i'm alive, i'm alive!!!!!!!\n";
 }
 
+FragTrap::FragTrap(const FragTrap& base)
+{
+	std::srand(std::time(NULL));
+	this->HP = base.HP;
+	this->MaxHP = base.MaxHP;
+	this->Energy = base.Energy;
+	this->MaxEnergy = base.MaxEnergy;
+	this->Name = base.Name;
+	this->MeleeDamage = base.MeleeDamage;
+	this->RangeDamage = base.RangeDamage;
+	this->ArmorReduction = base.ArmorReduction;
+	std::cout << "<" << this->Name << "> I'm a copy!\n";
+}
+
+FragTrap &FragTrap::operator=(const FragTrap& base)
+{
+	this->HP = base.HP;
+	this->MaxHP = base.MaxHP;
+	this->Energy = base.Energy;
+	this->MaxEnergy = base.MaxEnergy;
+	this->Name = base.Name;
+	this->MeleeDamage = base.MeleeDamage;
+	this->RangeDamage = base.RangeDamage;
+	this->ArmorReduction = base.ArmorReduction;
+	std::cout << "<" << this->Name << "> I'm a assignated!\n";
+	return (*this);
+}
+
 FragTrap::~FragTrap()
 {
 	std::cout << "EXPLOSIOOOOOOOOONS!!!!!!\n";

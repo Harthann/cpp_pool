@@ -6,7 +6,7 @@
 //#		CONTRUCTOR/DESTRUCTOR			#
 //#######################################
 
-SuperTrap::SuperTrap(std::string& name) :
+SuperTrap::SuperTrap(std::string name) :
 ClapTrap(name),
 FragTrap(name),
 NinjaTrap(name)
@@ -17,6 +17,37 @@ NinjaTrap(name)
 	this->ArmorReduction = 5;
 }
 
+SuperTrap::SuperTrap(const SuperTrap & base)
+{
+	std::cout << "\033[0;96m";
+	this->HP = base.HP;
+	this->MaxHP = base.MaxHP;
+	this->Energy = base.Energy;
+	this->MaxEnergy = base.MaxEnergy;
+	this->Name = base.Name;
+	this->MeleeDamage = base.MeleeDamage;
+	this->RangeDamage = base.RangeDamage;
+	this->ArmorReduction = base.ArmorReduction;
+	std::cout << "<" << this->Name << "> I'm a copy!\n";
+	std::cout << "\033[0;39m";
+}
+
+SuperTrap &SuperTrap::operator=(const SuperTrap& base)
+{
+	std::cout << "\033[0;96m";
+	this->HP = base.HP;
+	this->MaxHP = base.MaxHP;
+	this->Energy = base.Energy;
+	this->MaxEnergy = base.MaxEnergy;
+	this->Name = base.Name;
+	this->MeleeDamage = base.MeleeDamage;
+	this->RangeDamage = base.RangeDamage;
+	this->ArmorReduction = base.ArmorReduction;
+	std::cout << "<" << this->Name << "> I'm a assignated!\n";
+	std::cout << "\033[0;39m";
+	return (*this);
+}
+
 SuperTrap::~SuperTrap()
 {};
 
@@ -24,15 +55,3 @@ SuperTrap::~SuperTrap()
 //#		MEMBER FUNCTIONS				#
 //#######################################
 
-
-void		SuperTrap::printStat() const
-{
-	std::cout << "HP : " << this->HP << std::endl;
-	std::cout << "MaxHP : " << this->MaxHP << std::endl;
-	std::cout << "Energy : " << this->Energy << std::endl;
-	std::cout << "MaxEnergy : " << this->MaxEnergy << std::endl;
-	std::cout << "Level : " << this->Level << std::endl;
-	std::cout << "MeleeDamage : " << this->MeleeDamage << std::endl;
-	std::cout << "RangeDamage : " << this->RangeDamage << std::endl;
-	std::cout << "ArmoreReduction : " << this->ArmorReduction << std::endl;
-}

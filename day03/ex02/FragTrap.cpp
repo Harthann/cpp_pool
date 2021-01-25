@@ -4,18 +4,51 @@
 //	CONSTRUCTOR/DESTRUCTOR	#
 //###########################
 
-FragTrap::FragTrap(std::string& name) :
+FragTrap::FragTrap(std::string name) :
 ClapTrap(name, 100, 100, 100, 1, 30, 20, 5)
 {
 	std::srand(std::time(NULL));
 	std::cout << "\033[0;32m";
 	std::cout << "<" << name << "> I'm alive, i'm alive, i'm alive!!!!!!!\n";
+	std::cout << "\033[0;39m";
+}
+
+FragTrap::FragTrap(const FragTrap &base)
+{
+	std::cout << "\033[0;32m";
+	this->HP = base.HP;
+	this->MaxHP = base.MaxHP;
+	this->Energy = base.Energy;
+	this->MaxEnergy = base.MaxEnergy;
+	this->Name = base.Name;
+	this->MeleeDamage = base.MeleeDamage;
+	this->RangeDamage = base.RangeDamage;
+	this->ArmorReduction = base.ArmorReduction;
+	std::cout << "<" << this->Name << "> I'm a copy!\n";
+	std::cout << "\033[0;39m";
+}
+
+FragTrap &FragTrap::operator=(const FragTrap &base)
+{
+	std::cout << "\033[0;32m";
+	this->HP = base.HP;
+	this->MaxHP = base.MaxHP;
+	this->Energy = base.Energy;
+	this->MaxEnergy = base.MaxEnergy;
+	this->Name = base.Name;
+	this->MeleeDamage = base.MeleeDamage;
+	this->RangeDamage = base.RangeDamage;
+	this->ArmorReduction = base.ArmorReduction;
+	std::cout << "<" << this->Name << "> I'm a assignated!\n";
+	std::cout << "\033[0;39m";
+	return (*this);
 }
 
 FragTrap::~FragTrap()
 {
 	std::cout << "\033[0;32m";
 	std::cout << "EXPLOSIOOOOOOOOONS!!!!!!\n";
+	std::cout << "\033[0;39m";
 }
 
 //#######################
@@ -26,6 +59,7 @@ void	FragTrap::vaulthunter_dot_exe(std::string const &target)
 {
 	int tmp;
 
+	std::cout << "\033[0;32m";
 	if (this->Energy < 25)
 		std::cout << "Not enough power\n";
 	else if (this->Level < 2)
@@ -64,4 +98,5 @@ void	FragTrap::vaulthunter_dot_exe(std::string const &target)
 	this->Energy -= 25;
 	if (this->Energy < 0)
 		this->Energy = 0;
+	std::cout << "\033[0;39m";
 }

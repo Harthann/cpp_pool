@@ -4,12 +4,43 @@
 //	CONSTRUCTOR/DESTRUCTOR	#
 //###########################
 
-ScavTrap::ScavTrap(std::string& name) :
+ScavTrap::ScavTrap(std::string name) :
 ClapTrap(name, 100, 100, 50, 1, 20, 15, 3)
 {
 	std::srand(std::time(NULL));
 	std::cout << "\033[0;35m";
 	std::cout << "<" << name << "> Oh Hello there! My name is " << name << std::endl;
+}
+
+ScavTrap::ScavTrap(const ScavTrap & base)
+{
+	std::cout << "\033[0;35m";
+	this->HP = base.HP;
+	this->MaxHP = base.MaxHP;
+	this->Energy = base.Energy;
+	this->MaxEnergy = base.MaxEnergy;
+	this->Name = base.Name;
+	this->MeleeDamage = base.MeleeDamage;
+	this->RangeDamage = base.RangeDamage;
+	this->ArmorReduction = base.ArmorReduction;
+	std::cout << "<" << this->Name << "> I'm a copy!\n";
+	std::cout << "\033[0;39m";
+}
+
+ScavTrap &ScavTrap::operator=(const ScavTrap& base)
+{
+	std::cout << "\033[0;35m";
+	this->HP = base.HP;
+	this->MaxHP = base.MaxHP;
+	this->Energy = base.Energy;
+	this->MaxEnergy = base.MaxEnergy;
+	this->Name = base.Name;
+	this->MeleeDamage = base.MeleeDamage;
+	this->RangeDamage = base.RangeDamage;
+	this->ArmorReduction = base.ArmorReduction;
+	std::cout << "<" << this->Name << "> I'm a assignated!\n";
+	std::cout << "\033[0;39m";
+	return (*this);
 }
 
 ScavTrap::~ScavTrap()

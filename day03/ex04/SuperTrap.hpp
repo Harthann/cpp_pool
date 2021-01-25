@@ -27,9 +27,11 @@
 class SuperTrap : public FragTrap, public NinjaTrap
 {
 	public:
-		SuperTrap(std::string& name);
+		SuperTrap(std::string name = "Unknown");
+		SuperTrap(const SuperTrap &base);
+		SuperTrap &operator=(const SuperTrap &base);
 		~SuperTrap();
-		void	printStat() const;
+		// using ClapTrap::LevelUP;
 		using NinjaTrap::meleeAttack;
 		using FragTrap::rangedAttack;
 		using NinjaTrap::ninjaShoebox;
