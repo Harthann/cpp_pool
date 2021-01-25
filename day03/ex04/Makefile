@@ -9,15 +9,12 @@ ALL_SRCS= $(CLASSES_SRCS) $(SRCS)
 OBJS= $(ALL_SRCS:%.cpp=%.o)
 
 CXX= clang++
-CXXFLAGS= -Wall -Werror -Wextra
+CXXFLAGS= -Wall -Wextra -Werror -std=c++98
 INC_DIR=.
 $(NAME): all
 
 all: $(OBJS)
 	$(CXX) $(CXXFLAGS) $(OBJS) -I$(INC_DIR) -o $(NAME)
-
-print:
-	@echo "SRCS are : " $(ALL_SRCS) " and CLASSES_HEADERS are : " $(CLASSES_HEADERS)
 
 %.o : %.cpp
 	$(CXX) $(CXXFLAGS) -c -I$(INC_DIR) $< -o $@

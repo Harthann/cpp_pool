@@ -2,12 +2,16 @@
 #define FRAG_TRAP_HPP
 
 #include <iostream>
+#include <ctime>
+#include <stdlib.h>
+#include <time.h>
 
 class FragTrap
 {
 	public:
 		FragTrap(std::string name);
 		~FragTrap();
+		void	LevelUP();
 		void	rangedAttack(std::string const& target);
 		void	meleeAttack(std::string const& target);
 		void	takeDamage(unsigned int amount);
@@ -17,6 +21,7 @@ class FragTrap
 		int HP;
 		int MaxHP;
 		int Energy;
+		int MaxEnergy;
 		int Level;
 		std::string Name;
 		int MeleeDamage;

@@ -19,7 +19,7 @@ class Fixed
 		int				toInt(void) const;
 		float			toFloat(void) const;
 
-		class Fixed&	operator=(const Fixed &base);
+		Fixed&	operator=(const Fixed &base);
 	private:
 		int fix_point;
 		static const int bits = 8;

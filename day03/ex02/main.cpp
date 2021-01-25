@@ -5,7 +5,7 @@
 int		main(void)
 {
 	std::string scav_n = "SC4V-TP";
-	std::string clap_n = "CL4P-TP";
+	std::string clap_n = "FR4G-TP";
 	FragTrap clap(clap_n);
 	ScavTrap scav(scav_n);
 

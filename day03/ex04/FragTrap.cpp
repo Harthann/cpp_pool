@@ -4,79 +4,71 @@
 //	CONSTRUCTOR/DESTRUCTOR	#
 //###########################
 
-FragTrap::FragTrap(std::string name) : ClapTrap(name)
+FragTrap::FragTrap(std::string& name) : ClapTrap(name)
 {
-	std::srand(std::time(nullptr));
+	std::srand(std::time(NULL));
 
-	std::cout << "\033[0;36m";
-	std::cout << "<Glados> FR4G-TRAP mode initiate\n";
+	std::cout << "\033[0;32m";
+	std::cout << "<" << name << "> I'm alive, i'm alive, i'm alive!!!!!!!\n";
 }
 
 FragTrap::~FragTrap()
 {
-	std::cout << "\033[0;36m";
-	std::cout << "<Glados> FR4G-TRAP mode deactivated.\n";
+	std::cout << "\033[0;32m";
+	std::cout << "EXPLOSIOOOOOOOOONS!!!!!!\n";
 }
 
 //#######################
 //		MEMBER FUNCTION	#
 //#######################
 
-void		FragTrap::meleeAttack(const std::string& target) const
+void	FragTrap::rangedAttack(const std::string& target) const 
 {
-	ClapTrap::meleeAttack(target);
-	std::cout << "I stab you from the shadow\n";
-}
-
-void		FragTrap::rangeAttack(const std::string& target) const
-{
-	ClapTrap::meleeAttack(target);
-	std::cout << "My kunai will pierce you\n";
+	std::cout << "\033[0;32m";
+	std::cout << "<" << this->Name << "> throw rock frantically ";
+	std::cout << "causing " << this->RangeDamage << " to " << target << std::endl;
 }
 
 void	FragTrap::vaulthunter_dot_exe(std::string const &target)
 {
 	int tmp;
 
-	std::cout << "\033[0;36m";
 	if (this->Energy < 25)
 		std::cout << "Not enough power\n";
+	else if (this->Level < 2)
+		std::cout << "Skill not learned yet, need to level up\n";
 	else
 	{
-		tmp = std::rand() % 5;
-		std::cout << "<" <<this->Name << ">" << " Launching vaulthunter.exe\n";
-		if (tmp == 0)
-		{
-			std::cout << "< Bullet storm activated >\n";
-			std::cout << "<" <<this->Name << ">" << " I am a storm of death and bullets.\n";
-			std::cout << target << " is now like a strainer\n";
+		switch (tmp = std::rand() % 5) {
+			case 0 :
+				std::cout << "< Bullet storm activated >\n";
+				std::cout << "<" <<this->Name << ">" << " I am a storm of death and bullets.\n";
+				std::cout << target << " is now like a strainer\n";
+				break ;
+			case 1 :
+				std::cout << "< Rainbow Nova activated >\n";
+				std::cout << "<" <<this->Name << ">" << " Admire my deadly aura\n";
+				std::cout << target << " is blind by the rainbow flash\n";
+				break ;
+			case 2 :
+				std::cout << "< M3D1C-TR4P activated >\n";
+				std::cout << "<" <<this->Name << ">" << " Just a scratch you'll be fine\n";
+				std::cout << target << " is healed by M3D1C-TR4P\n";
+				break ;
+			case 3 : 
+				std::cout << "< Updating FR4G-TR4P >\n";
+				std::cout << "<" << this->Name << ">" << " Hahaha, hahaha, I rise again\n";
+				std::cout << target << " is astonish\n";
+				break ;
+			case 4 :
+				std::cout << "< B0MB0-TR4P activated >\n";
+				std::cout << "<" << this->Name << ">" << " Activate the key, press the button and BOOOOOOOOM\n";
+				std::cout << target << " is blown awy by the epxlosion\n";
+				break ;
 		}
-		if (tmp == 1)
-		{
-			std::cout << "< Rainbow Nova activated >\n";
-			std::cout << "<" <<this->Name << ">" << " Admire my deadly aura\n";
-			std::cout << target << " is blind by the rainbow flash\n";
-		}
-		if (tmp == 2)
-		{
-			std::cout << "< M3D1C-TR4P activated >\n";
-			std::cout << "<" <<this->Name << ">" << " Just a scratch you'll be fine\n";
-			std::cout << target << " is healed by M3D1C-TR4P\n";
-		}
-		if (tmp == 3)
-		{
-			std::cout << "< Updating FR4G-TR4P >\n";
-			std::cout << "<" << this->Name << ">" << " Hahaha, hahaha, I rise again\n";
-			std::cout << target << " is astonish\n";
-		}
-		if (tmp == 4)
-		{
-			std::cout << "< B0MB0-TR4P activated >\n";
-			std::cout << "<" << this->Name << ">" << " Activate the key, press the button and BOOOOOOOOM\n";
-			std::cout << target << " is blown away by explosion\n";
-		}
-		
 	}
+
 	this->Energy -= 25;
-	std::cout << this->Name << " have now " << this->Energy << " energy\n";
+	if (this->Energy < 0)
+		this->Energy = 0;
 }

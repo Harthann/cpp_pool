@@ -6,13 +6,14 @@
 class ClapTrap
 {
 	public:
-		ClapTrap(std::string name);
-		ClapTrap(std::string name, int hp, int mhp, int en, int lvl, int mdmg, int rdmg, int ard);
+		ClapTrap(std::string& name);
+		ClapTrap(std::string& name, int hp, int mhp, int en, int lvl, int mdmg, int rdmg, int ard);
 		~ClapTrap();
-		void	rangedAttack(std::string const& target) const;
-		void	meleeAttack(std::string const& target) const;
+		void	rangedAttack(std::string const& target);
+		void	meleeAttack(std::string const& target);
 		void	takeDamage(unsigned int amount);
 		void	beRepaired(unsigned int amount);
+		void	LevelUP(void);
 	protected:
 		int HP;
 		int MaxHP;

@@ -4,23 +4,24 @@
 //	CONSTRUCTOR/DESTRUCTOR	#
 //###########################
 
-ClapTrap::ClapTrap(std::string name) :
+ClapTrap::ClapTrap(std::string& name) :
 HP(100), MaxHP(100), Energy(100), MaxEnergy(100), Level(1), Name(name), MeleeDamage(30), RangeDamage(20), ArmorReduction(5)
 {
-	std::cout << "\033[0;32m";
+	std::cout << "\033[0;33m";
 	std::cout << "<Glados> CL4P-TRAP UNIT CREATED!!\n";
 }
 
-ClapTrap::ClapTrap(std::string name, int hp, int mhp, int en, int lvl, int mdmg, int rdmg, int ard) :
+ClapTrap::ClapTrap(std::string& name, int hp, int mhp, int en, int lvl, int mdmg, int rdmg, int ard) :
 HP(hp), MaxHP(mhp), Energy(en), MaxEnergy(en), Level(lvl), Name(name), MeleeDamage(mdmg), RangeDamage(rdmg), ArmorReduction(ard)
 {
-	std::cout << "\033[0;32m";
+	std::cout << "\033[0;33m";
 	std::cout << "<Glados> CL4P-TRAP UNIT CREATED!!\n";
 }
+
 
 ClapTrap::~ClapTrap()
 {
-	std::cout << "\033[0;32m";
+	std::cout << "\033[0;33m";
 	std::cout << "<Glados> CL4P-TRAP UNIT DESTROYED!!\n";
 }
 
@@ -28,24 +29,31 @@ ClapTrap::~ClapTrap()
 //		MEMBER FUNCTION	#
 //#######################
 
-void	ClapTrap::rangedAttack(std::string const& target) const
+void	ClapTrap::LevelUP(void)
 {
-	std::cout << "\033[0;32m";
+	this->Level++;
+	std::cout << "\033[0;33m";
+	std::cout << "<Glados> " << this->Name << " has leveled up!\n";
+}
+
+void	ClapTrap::rangedAttack(std::string const& target)
+{
+	std::cout << "\033[0;33m";
 	std::cout << this->Name << " use ranged attack against " << target << std::endl;
 	std::cout << this->Name << " inflicts " << this->RangeDamage << " damage\n";
 }
 
-void	ClapTrap::meleeAttack(std::string const& target) const
+void	ClapTrap::meleeAttack(std::string const& target)
 {
-	std::cout << "\033[0;32m";
+	std::cout << "\033[0;33m";
 	std::cout << this->Name << " use melee attack against " << target << std::endl;
 	std::cout << this->Name << " inflicts " << this->MeleeDamage << " damage\n";
 }
 
 void	ClapTrap::takeDamage(unsigned int amount)
 {
-	std::cout << "\033[0;32m";
-	std::cout << this->Name << " lose " << amount - this->ArmorReduction << " HP\n";
+	std::cout << "\033[0;33m";
+	std::cout << this->Name << " lose " << amount - this->ArmorReduction << " HP (AR : " << this->ArmorReduction << ")\n";
 	this->HP -= (amount - this->ArmorReduction);
 	if (this->HP < 0)
 		this->HP = 0;
@@ -53,10 +61,13 @@ void	ClapTrap::takeDamage(unsigned int amount)
 
 void	ClapTrap::beRepaired(unsigned int amount)
 {
-	std::cout << "\033[0;32m";
+	std::cout << "\033[0;33m";
 	std::cout << this->Name << " gain " << amount << " HP\n";
 	this->HP += amount;
-	if (this->HP > 100)
-		this->HP = 100;
+	if (this->HP > this->MaxHP)
+		this->HP = this->MaxHP;
 	std::cout << this->Name << " have now " << this->HP << " HP\n";
+	if (this->Energy > this->MaxEnergy)
+		this->Energy = this->MaxEnergy;
+	std::cout << this->Name << " resplenish some energy he now have " << this->Energy << " Energy\n";
 }

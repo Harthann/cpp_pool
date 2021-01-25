@@ -2,15 +2,17 @@
 #define FRAG_TRAP_HPP
 
 #include <iostream>
+#include <ctime>
+#include <stdlib.h>
+#include <time.h>
 #include "ClapTrap.hpp"
 
 class FragTrap : public ClapTrap
 {
 	public:
-		FragTrap(std::string name);
+		FragTrap(std::string& name);
 		~FragTrap();
 		void	vaulthunter_dot_exe(std::string const &target);
-	private:
 };
 
 #endif

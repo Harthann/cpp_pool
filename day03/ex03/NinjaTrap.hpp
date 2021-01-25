@@ -6,7 +6,7 @@
 #include "FragTrap.hpp"
 #include "ScavTrap.hpp"
 
-class NinjaTrap : ClapTrap
+class NinjaTrap : public ClapTrap
 {
 	public:
 		NinjaTrap(std::string name);
@@ -14,6 +14,7 @@ class NinjaTrap : ClapTrap
 		void	ninjaShoebox(FragTrap& target);
 		void	ninjaShoebox(ScavTrap& target);
 		void	ninjaShoebox(NinjaTrap& target);
+		void	ninjaShoebox(ClapTrap& target);
 	private:
 };
 

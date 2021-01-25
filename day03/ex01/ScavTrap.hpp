@@ -2,10 +2,15 @@
 #define SCAVTRAP_HPP
 
 #include <iostream>
+#include <stdlib.h>
+#include <ctime>
+#include <time.h>
+#include <vector>
+
 
 class ScavTrap
 {
-		public:
+	public:
 		ScavTrap(std::string name);
 		~ScavTrap();
 		void	rangedAttack(std::string const& target);
