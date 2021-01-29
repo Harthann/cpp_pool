@@ -6,7 +6,7 @@
 class Ennemy
 {
 	public:
-		Ennemy(int hp, std::string type);
+		Ennemy(int hp = 0, std::string type = "Base");
 		Ennemy(Ennemy const &);
 		virtual ~Ennemy();
 		Ennemy& operator=(Ennemy const& e);
@@ -14,11 +14,9 @@ class Ennemy
 		int		getHP() const;
 		std::string	getType() const;
 		virtual void	takeDamage(int);
-	private:
+	protected:
 		int	hp;
 		std::string type;
-	friend class SuperMutant;
-	friend class RadScorpion;
 };
 
 #endif

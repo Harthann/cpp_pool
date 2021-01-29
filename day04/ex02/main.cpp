@@ -6,7 +6,7 @@ int main()
 {
 	ISpaceMarine* bob = new TacticalMarine;
 	ISpaceMarine* jim = new AssaultTerminator;
-	Squad* bravo = new Squad;
+	ISquad* bravo = new Squad;
 
 	bravo->push(bob);
 	bravo->push(jim);

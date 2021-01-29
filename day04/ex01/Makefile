@@ -55,7 +55,7 @@ INCLUDE	= AWeapon.hpp Character.hpp Ennemy.hpp PlasmaRifle.hpp \
 #			FLAGS		#
 #########################
 
-FLAGS =
+FLAGS = -Wall -Werror -Wextra -std=c++98
 SAN = -g3 -fsanitize=address
 OPT_FLAGS = -flto
 
@@ -63,8 +63,8 @@ OPT_FLAGS = -flto
 #		LIBRARIES		#
 #########################
 
-LIBFT	= libft.a
-LIB = lib/
+LIBFT	=
+LIB = 
 LIBS = ${addprefix $(LIB), ${LIBFT}}
 
 ########################

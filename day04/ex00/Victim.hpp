@@ -8,12 +8,13 @@ class Victim
 	public:
 		Victim();
 		Victim(std::string name);
+		Victim(const Victim &base);
 		Victim& operator=(const Victim&);
 		~Victim();
 
 		std::string	getName() const;
 		virtual void		getPolymorphed() const;
-	private:
+	protected:
 		std::string name;
 };
 

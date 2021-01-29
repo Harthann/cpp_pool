@@ -16,6 +16,14 @@ Victim::Victim(std::string name) : name(name)
 	std::cout << name << " just appeared!\n";
 }
 
+Victim::Victim(const Victim& base)
+{
+	this->name = base.getName();
+	std::cout << "Some random victim called ";
+	std::cout << this->name << " just appeared!\n";
+}
+
+
 Victim& Victim::operator=(const Victim& V)
 {
 	name = V.name;

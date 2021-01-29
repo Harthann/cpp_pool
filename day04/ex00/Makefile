@@ -53,7 +53,7 @@ INCLUDE	= Sorcerer.hpp Victim.hpp Peon.hpp
 #			FLAGS		#
 #########################
 
-FLAGS = -Wall -Werror -Wextra -O2 -march=native
+FLAGS = -Wall -Werror -Wextra -std=c++98
 SAN = -g3 -fsanitize=address
 OPT_FLAGS = -flto
 

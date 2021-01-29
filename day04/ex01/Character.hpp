@@ -8,7 +8,7 @@
 class Character
 {
 	public:
-		Character(std::string const& name);
+		Character(std::string const& name = "Unknown");
 		Character(Character const&);
 		Character& operator=(Character const&);
 		~Character();

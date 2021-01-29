@@ -8,6 +8,7 @@ class RadScorpion : public Ennemy
 {
 	public:
 		RadScorpion();
+		RadScorpion &operator=(const RadScorpion &base);
 		RadScorpion(RadScorpion const&);
 		~RadScorpion();
 	private:
