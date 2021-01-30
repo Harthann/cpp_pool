@@ -7,6 +7,8 @@ class TacticalMarine : public ISpaceMarine
 {
 	public:
 		TacticalMarine();
+		TacticalMarine(const TacticalMarine& base);
+		TacticalMarine &operator=(const TacticalMarine& base);
 		~TacticalMarine();
 		ISpaceMarine* clone() const;
 		void	battleCry() const;

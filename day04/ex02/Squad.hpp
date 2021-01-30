@@ -2,6 +2,7 @@
 # define SQUAD_HPP
 
 #include "ISquad.hpp"
+#include <vector>
 
 class Squad : public ISquad
 {
@@ -9,14 +10,15 @@ class Squad : public ISquad
 		Squad();
 		~Squad();
 		Squad(Squad const&);
+		Squad(ISquad const&);
+		Squad &operator=(const Squad& base);
+	
 		int getCount() const;
 		ISpaceMarine* getUnit(int) const;
 		int	push(ISpaceMarine*);
 
-		const Squad& operator=(Squad const&);
 	private:
-		ISpaceMarine **list;
-		int	count;
+		std::vector<ISpaceMarine*> list;
 };
 
 #endif

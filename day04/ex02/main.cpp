@@ -12,35 +12,37 @@ int main()
 	bravo->push(jim);
 	bravo->push(bob->clone());
 	bravo->push(jim->clone());
-	Squad alpha = *bravo;
-	Squad charlie;
-	charlie = *bravo;
-	std::cout << "This is charlie turn to attack\n";
-	for (int i = 0; i < charlie.getCount(); i++)
+	ISquad *alpha = new Squad(*bravo);
+	ISquad *charlie;
+	charlie = bravo;
+	std::cout << "====\tThis is charlie turn to attack\t====\n";
+	for (int i = 0; i < charlie->getCount(); i++)
 	{
-		ISpaceMarine* cur = charlie.getUnit(i);
+		ISpaceMarine* cur = charlie->getUnit(i);
 		cur->battleCry();
 		cur->rangedAttack();
 		cur->meleeAttack();
 	}
-	std::cout << "This is alpha turn to attack\n";
-	for (int i = 0; i < alpha.getCount(); i++)
+	std::cout << "====\tThis is alpha turn to attack====\t\n";
+	for (int i = 0; i < alpha->getCount(); i++)
 	{
-		ISpaceMarine* cur = alpha.getUnit(i);
+		ISpaceMarine* cur = alpha->getUnit(i);
 		cur->battleCry();
 		cur->rangedAttack();
 		cur->meleeAttack();
 	}
-	std::cout << "This is bravo turn to attack\n";
-	for (int i = 0; i < alpha.getCount(); i++)
+	std::cout << "====\tThis is bravo turn to attack\t====\n";
+	for (int i = 0; i < alpha->getCount(); i++)
 	{
-		ISpaceMarine* cur = alpha.getUnit(i);
+		ISpaceMarine* cur = alpha->getUnit(i);
 		cur->battleCry();
 		cur->rangedAttack();
 		cur->meleeAttack();
 	}
 	std::cout << "Assigning new units to charlie\n";
 	charlie = alpha;
+	delete alpha;
 	delete bravo;
+
 	return 0;
 }

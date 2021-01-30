@@ -5,6 +5,17 @@ AssaultTerminator::AssaultTerminator()
 	std::cout << "\033[0;32m*teleports from space *\n\033[0m";
 }
 
+AssaultTerminator::AssaultTerminator(const AssaultTerminator &base) : ISpaceMarine(base)
+{
+}
+
+AssaultTerminator &AssaultTerminator::operator=(const AssaultTerminator& base)
+{
+	(void)base;
+	return (*this);
+}
+
+
 AssaultTerminator::~AssaultTerminator()
 {
 	std::cout << "\033[31mI’ll be back...\n\033[0m";
@@ -12,8 +23,8 @@ AssaultTerminator::~AssaultTerminator()
 
 ISpaceMarine *AssaultTerminator::clone() const
 {
-	AssaultTerminator *tmp = new AssaultTerminator;
-	return ((ISpaceMarine*)tmp);
+	ISpaceMarine *tmp = new AssaultTerminator(*this);
+	return (tmp);
 }
 
 void		AssaultTerminator::battleCry() const
