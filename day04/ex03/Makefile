@@ -54,7 +54,7 @@ INCLUDE	= AMateria.hpp Character.hpp Cure.hpp ICharacter.hpp \
 #			FLAGS		#
 #########################
 
-FLAGS = -Wall -Wextra
+FLAGS = -Wall -Wextra -std=c++98
 SAN = -g3 -fsanitize=address
 OPT_FLAGS = -flto
 

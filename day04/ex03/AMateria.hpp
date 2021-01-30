@@ -7,11 +7,10 @@
 class AMateria
 {
 	public:
-		AMateria();
-		AMateria(std::string const& type);
+		AMateria(std::string const& type = "AMateria");
 		AMateria(AMateria const&);
 		AMateria const& operator=(AMateria const&);
-		~AMateria();
+		virtual	~AMateria();
 
 		std::string const& getType() const;
 		unsigned int getXP() const;

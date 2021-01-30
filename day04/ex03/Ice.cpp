@@ -4,10 +4,8 @@
 Ice::Ice() : AMateria("ice")
 {}
 
-Ice::Ice(Ice const& base)
+Ice::Ice(Ice const& base) : AMateria(base)
 {
-	this->setXP(base.getXP());
-	this->setType(base.getType());
 }
 
 Ice const& Ice::operator=(Ice const& base)

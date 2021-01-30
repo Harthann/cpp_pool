@@ -53,7 +53,7 @@ INCLUDE	= AssaultTerminator.hpp ISpaceMarine.hpp ISquad.hpp Squad.hpp TacticalMa
 #			FLAGS		#
 #########################
 
-FLAGS = -Wall -Wextra
+FLAGS = -Wall -Wextra -std=c++98
 SAN = -g3 -fsanitize=address
 OPT_FLAGS = -flto
 

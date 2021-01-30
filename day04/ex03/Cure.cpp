@@ -4,10 +4,8 @@
 Cure::Cure() : AMateria("cure")
 {}
 
-Cure::Cure(Cure const& base)
+Cure::Cure(Cure const& base) : AMateria(base)
 {
-	this->setXP(base.getXP());
-	this->setType(base.getType());
 }
 
 Cure const& Cure::operator=(Cure const& base)
