@@ -8,8 +8,25 @@ MateriaSource::MateriaSource()
 	model[3] = 0;
 }
 
+MateriaSource::MateriaSource(const MateriaSource &base)
+{
+	for (int i = 0; i < 4; i++)
+		this->model[i] = base.model[i];
+
+}
+
+MateriaSource const & MateriaSource::operator=(const MateriaSource &base)
+{
+	for (int i = 0; i < 4; i++)
+		this->model[i] = base.model[i];
+	return (*this);
+}
+
 MateriaSource::~MateriaSource()
 {
+	for (int i = 0; i < 4; i++)
+		delete this->model[i];
+
 }
 
 void	MateriaSource::learnMateria(AMateria* m)

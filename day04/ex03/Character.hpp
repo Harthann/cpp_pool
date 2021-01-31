@@ -6,7 +6,7 @@
 class Character : public ICharacter
 {
 	public:
-		Character(std::string const& name);
+		Character(std::string const& name = "Unknown");
 		Character(Character const&);
 		Character const& operator=(Character const&);
 		~Character();
