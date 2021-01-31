@@ -51,18 +51,6 @@ void Bureaucrat::increment()
 
 void	Bureaucrat::signForm(Form & form) const
 {
-//	if (this->getGrade() > form.getSignGrade()) {
-//		std::cout << "<" << this->getName() << "> cannot signs ";
-//		std::cout << "<" << form.getName() << "> because ";
-//		std::cout << "<Grade too low to sign>\n";
-//		throw Bureaucrat::GradeTooLowException();
-//	}
-//	if (this->getGrade() > form.getExeGrade()) {
-//		std::cout << "<" << this->getName() << "> cannot signs ";
-//		std::cout << "<" << form.getName() << "> because ";
-//		std::cout << "<Grade too low to execute>\n";
-//		throw Bureaucrat::GradeTooLowException();
-//	}
 	try {
 		form.beSigned(*this);
 		std::cout << "<" << this->getName() << "> signs ";
