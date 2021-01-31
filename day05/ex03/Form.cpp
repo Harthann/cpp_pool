@@ -1,23 +1,24 @@
 #include "Form.hpp"
 
-Form::Form(std::string const& name, int signgrade, int exegrade, std::string const& target)
+Form::Form(std::string const& name, int const& signgrade, int const& exegrade, std::string const& target)
 {
 	if (signgrade <= 0 || exegrade <= 0)
-		GradeTooHighException();
+		throw Form::GradeTooHighException();
 	else if (signgrade > 150 || exegrade > 150)
-		GradeTooLowException();
+		throw Form::GradeTooLowException();
 	else {
 		this->name = name;
+		this->target = target;
 		this->sign = 0;
 		this->signgrade = signgrade;
 		this->exegrade = exegrade;
-		this->target = target;
 	}
 }
 
 Form::Form(Form const& base)
 {
 	this->name = base.getName();
+	this->target = base.getTarget();
 	this->sign = base.getSign();
 	this->signgrade = base.getSignGrade();
 	this->exegrade = base.getExeGrade();
@@ -26,6 +27,7 @@ Form::Form(Form const& base)
 Form const& Form::operator=(Form const& base)
 {
 	this->name = base.getName();
+	this->target = base.getTarget();
 	this->sign = base.getSign();
 	this->signgrade = base.getSignGrade();
 	this->exegrade = base.getExeGrade();
@@ -37,9 +39,19 @@ std::string Form::getName() const
 	return (this->name);
 }
 
+void	Form::setName(std::string const& n)
+{
+	this->name = n;
+}
+
 std::string Form::getTarget() const
 {
 	return (this->target);
+}
+
+void	Form::setTarget(std::string const& t)
+{
+	this->target = t;
 }
 
 bool Form::getSign() const
@@ -47,9 +59,19 @@ bool Form::getSign() const
 	return (this->sign);
 }
 
+void	Form::setSign(bool const &s)
+{
+	this->sign = s;
+}
+
 int Form::getSignGrade() const
 {
 	return (this->signgrade);
+}
+
+void	Form::setSignGrade(int const &sg)
+{
+	this->signgrade = sg;
 }
 
 int Form::getExeGrade() const
@@ -57,48 +79,16 @@ int Form::getExeGrade() const
 	return (this->exegrade);
 }
 
-void Form::setSign(bool tmp)
+void	Form::setExeGrade(int const &eg)
 {
-	this->sign = tmp;
+	this->exegrade = eg;
 }
 
-void Form::setSignGrade(int tmp)
+void	Form::beSigned(Bureaucrat const & b)
 {
-	this->signgrade = tmp;
-}
-
-void Form::setExeGrade(int tmp)
-{
-	this->exegrade = tmp;
-}
-
-void Form::setName(std::string const& tmp)
-{
-	this->name = tmp;
-}
-
-void Form::setTarget(std::string const& tmp)
-{
-	this->target = tmp;
-}
-
-void	Form::beSigned(Bureaucrat b)
-{
-	if (b.getGrade() <= this->getSignGrade())
-		this->sign = 1;
-	// b.signForm(*this);
-}
-
-void	Form::GradeTooHighException()
-{
-	std::exception error;
-	throw error;
-}
-
-void	Form::GradeTooLowException()
-{
-	std::exception error;
-	throw error;
+	if (b.getGrade() > this->getSignGrade())
+		throw Bureaucrat::GradeTooLowException();
+	this->sign = 1;
 }
 
 std::ostream& operator<<(std::ostream& os, Form const& f)

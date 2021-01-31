@@ -2,6 +2,9 @@
 # define ROBOTOMYREQUESTFORM_HPP
 
 #include "Form.hpp"
+#include <cstdlib>
+#include <ctime>
+#define nullptr 0
 
 class RobotomyRequestForm : public Form
 {

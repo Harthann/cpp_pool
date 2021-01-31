@@ -12,24 +12,24 @@ int	main(void)
 		Bureaucrat eric("Eric", 30);
 		Bureaucrat sam("Sam", 1);
 		Intern *joe = new Intern();
-		joe->makeForm("robotomy request", "oui");
-		joe->makeForm("random", "oui");
-		// ShrubberyCreationForm low_form("home");
-		// RobotomyRequestForm secondForm("Director");
-		// PresidentialPardonForm thirdform("Eric");
-		// bob.signForm(low_form);
-		// bob.executeForm(low_form);
-		// eric.signForm(secondForm);
-		// eric.executeForm(secondForm);
-		// sam.executeForm(thirdform);
-		// sam.signForm(thirdform);
-		// sam.executeForm(thirdform);
+		
+		Form *lowForm = joe->makeForm("shrubbery creation", "home");
+
+		Form *secondForm = joe->makeForm("robotomy request", "Director");
+		Form *thirdForm = joe->makeForm("presidential pardon", "Eric");
+		bob.signForm(*lowForm);
+		bob.executeForm(*lowForm);
+		eric.signForm(*secondForm);
+		eric.executeForm(*secondForm);
+		sam.signForm(*thirdForm);
+		sam.executeForm(*thirdForm);
+		delete lowForm;
+		delete secondForm;
+		delete thirdForm;	
 		delete joe;
 	}
-	catch (std::exception& e)
-	{
-		return (0);
+	catch (std::exception& e) {
+		std::cout << e.what() << std::endl;
 	}
-	std::cout << "Code successfully executed\n";
 	return (0);
 }

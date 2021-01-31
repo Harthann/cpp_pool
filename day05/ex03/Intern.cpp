@@ -6,8 +6,8 @@ std::map<std::string, createForm> forms_map;
 Intern::Intern()
 {
 	forms_map.insert(std::make_pair("robotomy request", Intern::createRRF));
-	forms_map.insert(std::make_pair("shrubbery creation", Intern::createPPF));
-	forms_map.insert(std::make_pair("presidential pardon", Intern::createSCF));
+	forms_map.insert(std::make_pair("shrubbery creation", Intern::createSCF));
+	forms_map.insert(std::make_pair("presidential pardon", Intern::createPPF));
 }
 
 Form* Intern::makeForm(std::string const& form, std::string const& target)
