@@ -5,12 +5,9 @@ Form("Shrubbery creation", 145, 137, target)
 {
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const& base)
+ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const& base) :
+Form(base.getName(), base.getSignGrade(), base.getExeGrade(), base.getTarget())
 {
-	this->setName(base.getName());
-	this->setTarget(base.getTarget());
-	this->setSignGrade(base.getSignGrade());
-	this->setExeGrade(base.getExeGrade());
 	this->setSign(base.getSign());
 }
 
@@ -27,12 +24,13 @@ ShrubberyCreationForm const& ShrubberyCreationForm::operator=(ShrubberyCreationF
 void	ShrubberyCreationForm::execute(Bureaucrat const& executor) const
 {
 	if (!this->getSign())
-		throw "This form isn't sign yet\n";
+		throw Form::FormNotSignedException();
 	if (executor.getGrade() > this->getExeGrade())
-		throw "This bureaucrat's grade is too low to execute this form\n";
+		throw Form::GradeTooLowException();
 	std::string file_name(this->getTarget().append("_shrubbery"));
-	std::ofstream output_file(file_name);
-	output_file << "\t_\\/_\n";
+	std::ofstream output_file;
+	output_file.open(file_name.c_str());
+	output_file << "    _\\/_\n";
 	output_file << "     /\\\n";
 	output_file << "     /\\\n";
 	output_file << "    /  \\\n";
@@ -45,5 +43,4 @@ void	ShrubberyCreationForm::execute(Bureaucrat const& executor) const
 	output_file << "     ||\n";
 	output_file << "   \\====/\n";
 	output_file << "    \\__/";
-	// EXECUTE CODE	
 }

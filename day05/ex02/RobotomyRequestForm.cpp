@@ -27,9 +27,9 @@ RobotomyRequestForm const& RobotomyRequestForm::operator=(RobotomyRequestForm co
 void	RobotomyRequestForm::execute(Bureaucrat const& executor) const
 {
 	if (!this->getSign())
-		throw "This form isn't sign yet\n";
+		throw Form::FormNotSignedException();
 	if (executor.getGrade() > this->getExeGrade())
-		throw "This bureaucrat's grade is too low for this form\n";
+		throw Form::GradeTooLowException();
 	std::srand(std::time(nullptr));
 	int random = std::rand();
 	std::cout << "*drilling noises*\n";

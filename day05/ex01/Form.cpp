@@ -1,11 +1,11 @@
 #include "Form.hpp"
 
-Form::Form(std::string const& name, int signgrade, int exegrade)
+Form::Form(std::string const& name, int const& signgrade, int const& exegrade)
 {
 	if (signgrade <= 0 || exegrade <= 0)
-		GradeTooHighException();
+		throw Form::GradeTooHighException();
 	else if (signgrade > 150 || exegrade > 150)
-		GradeTooLowException();
+		throw Form::GradeTooLowException();
 	else {
 		this->name = name;
 		this->sign = 0;
@@ -52,23 +52,18 @@ int Form::getExeGrade() const
 }
 
 
-void	Form::beSigned(Bureaucrat b)
+void	Form::beSigned(Bureaucrat const & b)
 {
-	if (b.getGrade() <= this->getSignGrade())
+	try {
+		b.signForm(*this);
 		this->sign = 1;
-	b.signForm(*this);
-}
-
-void	Form::GradeTooHighException()
-{
-	std::exception error;
-	throw error;
-}
-
-void	Form::GradeTooLowException()
-{
-	std::exception error;
-	throw error;
+	}
+	catch (Bureaucrat::GradeTooLowException &e) {
+		throw Form::GradeTooLowException();
+	}
+	catch (Bureaucrat::GradeTooHighException &e) {
+		throw Form::GradeTooHighException();
+	}
 }
 
 std::ostream& operator<<(std::ostream& os, Form const& f)

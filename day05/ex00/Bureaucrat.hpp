@@ -7,8 +7,9 @@
 class Bureaucrat
 {
 	public:
-		Bureaucrat(std::string const&, int);
+		Bureaucrat(std::string const& = "Unknown", int = 150);
 		Bureaucrat(Bureaucrat const&);
+		Bureaucrat const& operator=(Bureaucrat const&);
 		~Bureaucrat() {};
 
 		std::string getName() const;
@@ -16,10 +17,17 @@ class Bureaucrat
 		void decrement();
 		void increment();
 
-		Bureaucrat const& operator=(Bureaucrat const&);
 
-		void GradeTooHighException();
-		void GradeTooLowException();
+		struct GradeTooHighException : public std::exception {
+			const char * what() const throw() { 
+				return ("GradeTooHigh");
+			};
+		};
+		struct GradeTooLowException : public std::exception {
+			const char * what() const throw() {
+				return ("GradeTooLow");
+			};
+		};
 	private:
 		std::string name;
 		int grade;

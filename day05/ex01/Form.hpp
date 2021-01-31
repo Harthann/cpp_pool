@@ -8,7 +8,7 @@
 class Form
 {
 	public:
-		Form(std::string const& name, int, int);
+		Form(std::string const& name = "Unknown", const int& = 150, const int& = 150);
 		Form(Form const&);
 		Form const& operator=(Form const&);
 		~Form() {};
@@ -18,10 +18,19 @@ class Form
 		int getSignGrade() const;
 		int getExeGrade() const;
 
-		void	beSigned(class Bureaucrat);
+		void	beSigned(class Bureaucrat const&);
+		
+		struct GradeTooHighException : public std::exception {
+			const char * what() const throw() {
+				return ("Form::GradeTooHigh");
+			};
+		};
+		struct GradeTooLowException : public std::exception {
+			const char * what() const throw() {
+				return ("Form::GradeTooLow");
+			};
+		};
 
-		void GradeTooHighException();
-		void GradeTooLowException();
 	private:
 		std::string name;
 		bool sign;

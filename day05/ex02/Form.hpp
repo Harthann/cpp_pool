@@ -8,29 +8,41 @@
 class Form
 {
 	public:
-		Form(std::string const& name = "None", int = 0, int = 0, std::string const& = "None");
+		Form(std::string const& name = "Unknown", const int& = 150, const int& = 150, std::string const& target = "Unknown");
 		Form(Form const&);
 		Form const& operator=(Form const&);
 		~Form() {};
 		
 		std::string getName() const;
+		std::string getTarget() const;
 		bool getSign() const;
 		int getSignGrade() const;
 		int getExeGrade() const;
-		std::string getTarget() const;
 
-		void setName(std::string const&);
-		void setSign(bool);
-		void setSignGrade(int);
-		void setExeGrade(int);
-		void setTarget(std::string const&);
+		void	setName(std::string const &);
+		void	setTarget(std::string const &);
+		void	setSign(bool const&);
+		void	setSignGrade(int const&);
+		void	setExeGrade(int const&);
 
-		void	beSigned(class Bureaucrat);
-
-		void GradeTooHighException();
-		void GradeTooLowException();
-
-		virtual void execute(class Bureaucrat const&) const = 0;
+		void	beSigned(class Bureaucrat const&);
+		
+		struct GradeTooHighException : public std::exception {
+			const char * what() const throw() {
+				return ("Form::GradeTooHigh");
+			};
+		};
+		struct GradeTooLowException : public std::exception {
+			const char * what() const throw() {
+				return ("Form::GradeTooLow");
+			};
+		};
+		struct FormNotSignedException : public std::exception {
+			const char * what() const throw() {
+				return ("Form::FormNotSigned");
+			};
+		};
+		virtual void execute(Bureaucrat const& executor) const = 0;
 	private:
 		std::string name;
 		bool sign;

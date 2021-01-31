@@ -4,27 +4,65 @@
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
 
+void	promot_to_exe(Bureaucrat &bureaucrat, Form &form)
+{
+	while (1) {
+		try {
+			bureaucrat.executeForm(form);
+			break ;
+		}
+		catch (std::exception &e) {
+			bureaucrat.increment();
+		}
+	}
+}
+
+void	promot_to_sign(Bureaucrat &bureaucrat, Form &form)
+{
+	while (1) {
+		try {
+			bureaucrat.signForm(form);
+			break ;
+		}
+		catch (std::exception &e) {
+			bureaucrat.increment();
+		}
+	}
+}
+
 int	main(void)
 {
+	std::cout << "\n===== SHRUBBERY FORM =====\n";
 	try {
-		Bureaucrat bob("bob", 137);
-		Bureaucrat eric("Eric", 30);
-		Bureaucrat sam("Sam", 1);
+		Bureaucrat bob("bob", 150);
 		ShrubberyCreationForm low_form("home");
-		RobotomyRequestForm secondForm("Director");
-		PresidentialPardonForm thirdform("Eric");
-		bob.signForm(low_form);
-		bob.executeForm(low_form);
-		eric.signForm(secondForm);
-		eric.executeForm(secondForm);
-		sam.executeForm(thirdform);
-		sam.signForm(thirdform);
-		sam.executeForm(thirdform);
+		promot_to_sign(bob, low_form);
+		promot_to_exe(bob, low_form);
+
 	}
-	catch (std::exception& e)
-	{
-		return (0);
+	catch (std::exception& e) {
+		std::cout << e.what() << std::endl;
 	}
-	std::cout << "Code successfully executed\n";
+	std::cout << "\n===== ROBOTOMY FORM =====\n";
+	try {
+		Bureaucrat bob("bob", 40);
+		RobotomyRequestForm form("Director");
+		bob.signForm(form);
+		form.execute(bob);
+
+	}
+	catch (std::exception& e) {
+		std::cout << e.what() << std::endl;
+	}
+	std::cout << "\n===== PRESIDENTIAL FORM =====\n";
+	try {
+		Bureaucrat bob("bob", 5);
+		PresidentialPardonForm form(bob.getName());
+		bob.signForm(form);
+		form.execute(bob);
+	}
+	catch (std::exception& e) {
+		std::cout << e.what() << std::endl;
+	}
 	return (0);
 }
