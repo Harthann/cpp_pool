@@ -6,7 +6,7 @@
 #    By: nieyraud <nieyraud@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/10 16:28:15 by nieyraud          #+#    #+#              #
-#    Updated: 2020/07/17 08:25:28 by nieyraud         ###   ########.fr        #
+#    Updated: 2021/02/03 11:03:06 by nieyraud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,7 @@ vpath %.c $(foreach dir, $(PATH), $(dir))
 SRC		= ${SRC_FILE}
 SRCS	= $(addprefix ${PATH}, ${SRC_FILE})
 OBJ		= ${addprefix ${OBJ_PATH}/, ${SRC_FILE:%.cpp=%.o}}
-INCLUDE	= header.hpp
+INCLUDE	= 
 
 #########################
 #			FLAGS		#

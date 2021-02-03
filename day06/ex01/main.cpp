@@ -1,6 +1,11 @@
-#include "header.hpp"
 #include <iostream>
 #include <unistd.h>
+
+typedef struct data {
+	std::string s1;
+	int n;
+	std::string s2;
+} Data;
 
 char	random_alphanum(void)
 {
@@ -13,17 +18,16 @@ char	random_alphanum(void)
 
 void *serialize(void)
 {
-	void *ptr = new char[19];
+	void *ptr = new char[20];
 	int i;
 
 	i = -1;
 	while (++i < 8)
-		((char*)ptr)[i] = random_alphanum();
-	((int*)ptr)[2] = std::rand();
+		(reinterpret_cast<char*>(ptr))[i] = random_alphanum();
+	reinterpret_cast<int*>(ptr)[2] = std::rand();
 	i += 4;
-	while (i < 19)
-		((char*)ptr)[i++] = random_alphanum();
-	// write(1, ptr, 19);
+	while (i < 20)
+		reinterpret_cast<char*>(ptr)[i++] = random_alphanum();
 	return (ptr);
 }
 
@@ -31,9 +35,9 @@ Data *deserialize(void *raw)
 {
 	Data *d_ptr = new Data;
 
-	d_ptr->s1 = std::string((char*)raw, 8);
-	d_ptr->n = ((int*)raw)[2];
-	d_ptr->s2 = std::string((char*)raw + 12, 8);
+	d_ptr->s1 = std::string(reinterpret_cast<char*>(raw), 8);
+	d_ptr->n = (reinterpret_cast<int*>(raw))[2];
+	d_ptr->s2 = std::string(reinterpret_cast<char*>(raw) + 12, 8);
 	return (d_ptr);
 }
 
