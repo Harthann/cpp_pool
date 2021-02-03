@@ -3,6 +3,13 @@
 
 #include <iostream>
 
+struct NotFound : std::exception
+{
+	const char* what() const throw() {
+		return ("Value not found");
+	}
+};
+
 template<typename T>
 unsigned long int easyfind(T tmp, int nb)
 {
@@ -11,7 +18,7 @@ unsigned long int easyfind(T tmp, int nb)
 		if (tmp[i] == nb)
 			return (i);
 	}
-	throw nb;
+	throw ::NotFound();
 }
 
 template<typename T>

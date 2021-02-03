@@ -29,20 +29,21 @@ int main(void)
 	print(dq);
 	try {
 		tmp = easyfind(v, 3);
-		std::cout << "Value in v found at index: " << tmp << std::endl;
+		std::cout << "Value : " << 3 <<" in v found at index: " << tmp << std::endl;
 		tmp = easyfind(v, 1);
-		std::cout << "Value in v found at index: " << tmp << std::endl;
+		std::cout << "Value : " << 1 <<" in v found at index: " << tmp << std::endl;
 		tmp = easyfind(dq, 657);
-		std::cout << "Value in dq found at index: " << tmp << std::endl;
+		std::cout << "Value : " << 657 <<" in dq found at index: " << tmp << std::endl;
 		tmp = easyfind(dq, 92);
-		std::cout << "Value in dq found at index: " << tmp << std::endl;
+		std::cout << "Value : " << 92 <<" in dq found at index: " << tmp << std::endl;
 		tmp = easyfind(ddq, 3);
-		std::cout << "Value in ddq found at index: " << tmp << std::endl;
+		std::cout << "Value : " << 3 <<" in ddq found at index: " << tmp << std::endl;
 		tmp = easyfind(v, 4);
+		std::cout << "Value : " << 4 <<" in ddq found at index: " << tmp << std::endl;
 	}
-	catch (int& nb)
+	catch (std::exception &e)
 	{
-		std::cout << "Value " << nb << " not found\n";
+		std::cout << e.what() << std::endl;
 	}
 	return (0);
 }
