@@ -4,7 +4,10 @@
 #include "Form.hpp"
 #include <cstdlib>
 #include <ctime>
+
+#ifndef nullptr
 #define nullptr 0
+#endif
 
 class RobotomyRequestForm : public Form
 {
