@@ -1,34 +1,69 @@
 #include <iostream>
 #include <string>
 #include <cmath>
+#include <limits.h>
+#include <math.h>
+
+void	convertINT(double &d)
+{
+	if (d > INT_MAX || d < INT_MIN || !std::isfinite(d))
+		std::cout << "int: impossible\n";
+	else
+		std::cout << "int: "  << static_cast<int>(d) << std::endl;
+}
+
+void	convertCHAR(double &d)
+{
+	std::cout << "char: ";
+	if (d > CHAR_MAX || d < CHAR_MIN)
+		std::cout << "impossible\n";
+	else if (std::isprint(static_cast<char>(d)))
+		std::cout << "'" << static_cast<char>(d) << "'" <<std::endl;
+	else
+		std::cout << "Non displayable" << std::endl;
+}
+
+void	convertDOUBLE(double &d)
+{
+	double fract_part;
+	double int_part;
+
+	fract_part = modf(d, &int_part);
+	std::cout << "double: " << d;
+	if (fract_part == 0 && std::isfinite(d))
+		std::cout << ".0";
+	std::cout << std::endl;
+
+}
+
+void	convertFLOAT(float d)
+{
+	float fract_part;
+	float int_part;
+
+	fract_part = modf(d, &int_part);
+	std::cout<< "float: " << static_cast<float>(d);
+	if (fract_part == 0 && std::isfinite(d))
+		std::cout << ".0";
+	std::cout << "f" << std::endl;
+}
 
 int main(int ac, char **av)
 {
-	int i;
-	char c;
-	float f;
 	double d;
-	std::string str(av[1]);
-
+	std::string str;
 	if (ac != 2)
 		return (0);
+	str = av[1];
+	if (str.length() == 1 && std::isprint(str[0]))
+		d = static_cast<double>(str[0]);
+	else
+		d = atof(av[1]);
 	try {
-		f = stof(str);
-		d = stod(str);
-		i = (int)f;
-		c = (char)i;
-		if (f > CHAR_MAX || f < CHAR_MIN || f != f || !std::isfinite(f))
-			std::cout << "char: impossible\n";
-		else if (f < 32)
-			std::cout << "char: Non displayable\n";
-		else
-			std::cout << "char: \'" << c << "\'\n";
-		if (f > INT32_MAX || f < INT32_MIN || f != f || !std::isfinite(f))
-			std::cout << "int: impossible\n";
-		else
-			std::cout << "int: " << i << std::endl;
-		std::cout << "float: " << f << "f\n";
-		std::cout << "double: " << d << std::endl;
+		convertCHAR(d);
+		convertINT(d);
+		convertFLOAT(d);
+		convertDOUBLE(d);
 	}
 	catch (std::invalid_argument error)
 	{

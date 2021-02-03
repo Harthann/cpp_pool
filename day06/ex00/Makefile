@@ -6,7 +6,7 @@
 #    By: nieyraud <nieyraud@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/10 16:28:15 by nieyraud          #+#    #+#              #
-#    Updated: 2020/07/17 07:33:48 by nieyraud         ###   ########.fr        #
+#    Updated: 2021/02/01 11:14:05 by nieyraud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,7 +53,7 @@ INCLUDE	=
 #			FLAGS		#
 #########################
 
-FLAGS = -Wall -Werror -Wextra -O2 -march=native
+FLAGS = -Wall -Werror -Wextra -std=c++98
 SAN = -g3 -fsanitize=address
 OPT_FLAGS = -flto
 
