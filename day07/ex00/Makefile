@@ -6,7 +6,7 @@
 #    By: nieyraud <nieyraud@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/10 16:28:15 by nieyraud          #+#    #+#              #
-#    Updated: 2020/07/17 10:03:29 by nieyraud         ###   ########.fr        #
+#    Updated: 2021/02/03 12:08:49 by nieyraud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ rouge=\033[31m
 #####################
 NAME = a.out
 
-SRC_FILE = whatever.cpp
+SRC_FILE = main.cpp
 
 #############################
 #		DIRCTORIES PATH		#
@@ -53,7 +53,7 @@ INCLUDE	=
 #			FLAGS		#
 #########################
 
-FLAGS = -Wall -Werror -Wextra -O2 -march=native
+FLAGS = -Wall -Werror -Wextra -std=c++98
 SAN = -g3 -fsanitize=address
 OPT_FLAGS = -flto
 

@@ -1,24 +1,5 @@
 #include <iostream>
-template<typename T>
-void	swap(T& a, T& b)
-{
-	T tmp;
-	tmp = a;
-	a = b;
-	b = tmp;
-}
-
-template<typename T>
-T min(T a, T b)
-{
-	return (a >= b ? b : a);
-}
-
-template<typename T>
-T max(T a, T b)
-{
-	return (a <= b ? b : a);
-}
+#include "whatever.hpp"
 
 int mainexample(void)
 {
@@ -48,15 +29,23 @@ int main(void)
 	b = 5;
 	c = 56.7;
 	d = 3.14;
-	std::cout << "Testing swap template:\n";
+	std::cout << "===== Testing swap template: =====\n";
+	std::cout << "Before swap a is : " << a << std::endl;
+	std::cout << "Before swap b is : " << b << std::endl;
 	swap<int>(a, b);
-	std::cout << "\tWorks with other type as well\n";
+	std::cout << "After swap a is : " << a << std::endl;
+	std::cout << "After swap b is : " << b << std::endl;
 	swap<double>(c, d);
-	std::cout << "Testing min/max template:\n";
-	std::cout << "\tBetween a and b, the max is: " << max<int>(a, b);
+	std::cout << "Before swap c is : " << c << std::endl;
+	std::cout << "Before swap d is : " << d << std::endl;
+	swap<int>(a, b);
+	std::cout << "After swap c is : " << c << std::endl;
+	std::cout << "After swap d is : " << d << std::endl;
+	
+	std::cout << "\n===== Testing min/max template: =====\n";
+	std::cout << "Between a and b, the max is: " << max<int>(a, b);
 	std::cout << " and the min is: " << min<int>(a, b) << std::endl;
-	std::cout << "\tWorks with other type as well\n";
-	std::cout << "\tBetween c and d, the max is: " << max<double>(c, d);
+	std::cout << "Between c and d, the max is: " << max<double>(c, d);
 	std::cout << " and the min is: " << min<double>(c, d) << std::endl;
 	std::cout << "\nHere is the output of main give by 42:\n\n";
 	mainexample();
