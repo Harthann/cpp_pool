@@ -11,7 +11,7 @@ class Form
 		Form(std::string const& name = "Unknown", const int& = 150, const int& = 150, std::string const& target = "Unknown");
 		Form(Form const&);
 		Form const& operator=(Form const&);
-		virtual ~Form() = 0;
+		virtual ~Form() {} ;
 		
 		std::string getName() const;
 		std::string getTarget() const;
