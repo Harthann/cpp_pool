@@ -29,7 +29,7 @@ rouge=\033[31m
 #####################
 NAME = a.out
 
-SRC_FILE = iter.cpp
+SRC_FILE = main.cpp
 
 #############################
 #		DIRCTORIES PATH		#
