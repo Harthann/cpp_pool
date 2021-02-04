@@ -6,31 +6,31 @@
 #include <iterator>
 #include "MutantStackIterator.hpp"
 
-// template<typename T> class MutantStackIterator;
 
-template<typename T>
+template<class T>
 class MutantStack : public std::stack<T>
 {
 	public:
-		typedef MutantStackIterator<T> iterator;
+		typedef typename std::stack<T>::container_type::reverse_iterator iterator;
 		iterator begin();
 		iterator end();
 	private:
 };
 
+//#######################################
+//#		MUTANT STACK MEMBER	#
+//#######################################
+
 template <typename T>
 typename MutantStack<T>::iterator MutantStack<T>::begin()
 {
-	MutantStackIterator<T> const& msi = MutantStackIterator<T>(&this->top());
-	return (msi);
+	return (this->c.rbegin());
 }
 
 template <typename T>
 typename MutantStack<T>::iterator MutantStack<T>::end()
 {
-	MutantStackIterator<T> const& msi = MutantStackIterator<T>(&this->top() - this->size());
-	return (msi);
+	return (this->c.rend());
 }
-
 
 #endif
