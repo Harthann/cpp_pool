@@ -6,14 +6,14 @@ void	list_test()
 	std::cout << "\n===== Testing List output: =====\n";
 	std::list<int> l;
 
-	l.push_front(5);
-	l.push_front(17);
-	std::cout << "Value currently at the top: " << l.front() << std::endl;
-	l.pop_front();
+	l.push_back(5);
+	l.push_back(17);
+	std::cout << "Value currently at the top: " << l.back() << std::endl;
+	l.pop_back();
 	std::cout << "Current size of the stack: " << l.size() << std::endl;
-	l.push_front(3);
-	l.push_front(5);
-	l.push_front(737);
+	l.push_back(3);
+	l.push_back(5);
+	l.push_back(737);
 	for (std::list<int>::iterator lit = l.begin(); lit != l.end(); lit++)
 		std::cout << *lit << " ";
 	std::cout << std::endl;
