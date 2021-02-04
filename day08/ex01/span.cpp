@@ -1,48 +1,53 @@
 #include "span.hpp"
 
-Span::Span(unsigned int size)
+Span::Span(size_t size)
 {
 	srand(time(nullptr));
-	this->v = new std::vector<int>;
-	this->v->reserve(size);
+	this->v.reserve(size);
+}
+
+
+size_t Span::getSize(void) const
+{
+	return (this->v.size());
 }
 
 void Span::addNumber(int nb)
 {
-	if (this->v->size() < this->v->capacity())
-		this->v->push_back(nb);
+	if (this->getSize() < this->v.capacity())
+		this->v.push_back(nb);
 	else
 		throw std::string("Trying to add more number than possible\n");
 
 }
 
-void Span::addNumber(int nb, IT start, IT end)
+void Span::addNumber(int nb, iterator start, iterator end)
 {
-	for (IT it = start; it != end; it++)
+	for (iterator it = start; it != end; it++)
 	{
-		if (this->v->size() < this->v->capacity())
-			this->v->push_back(nb);
+		if (this->v.size() < this->v.capacity())
+			this->v.push_back(nb);
 		else
 			throw std::string("Trying to add more number than possible\n");
 
 	}
 }
 
-void Span::addNumber(IT start, IT end)
+void Span::addNumber(iterator start, iterator end)
 {
-	if (end < start)
-		throw std::string("Iterator end lower than iterator start\n");
-	if ((unsigned long)(end - start) > this->v->capacity() - this->v->size())
-		throw std::string("Trying to add more number than possible\n");
-	this->v->insert(this->v->end(), start, end);
+//	if (end < start)
+//		throw std::string("Iterator end lower than iterator start\n");
+//	if ((unsigned long)(end - start) > this->v->capacity() - this->v->size())
+//		throw std::string("Trying to add more number than possible\n");
+	this->v.insert(this->v.end(), start, end);
 }
 
-void Span::addRandomNumber(unsigned int nb)
+void Span::addRandomNumber(size_t nb)
 {
-	for (unsigned int i = 0; i < nb; i++)
+	for (size_t i = 0; i < nb; i++)
 	{
-		if (this->v->size() < this->v->capacity())
-			this->v->push_back(std::rand());
+		if (this->v.size() < this->v.capacity())
+			this->v.push_back(std::rand());
 		else
 			throw std::string("Trying to add more number than possible\n");
 	}
@@ -50,40 +55,40 @@ void Span::addRandomNumber(unsigned int nb)
 
 void Span::test()
 {
-	std::cout << "Size: " << this->v->size() << std::endl;
-	std::cout << "Capacity: " << this->v->capacity() << std::endl;
+	std::cout << "Size: " << this->v.size() << std::endl;
+	std::cout << "Capacity: " << this->v.capacity() << std::endl;
 }
 
-void Span::print() const
+void Span::print()
 {
-	for (unsigned int i = 0; i < this->v->size(); i++)
-		std::cout << (*this->v)[i] << " ";
+	for (iterator it = this->begin(); it != this->end(); it++)
+		std::cout << *it << " ";
 	std::cout << std::endl;
 }
 
-std::vector<int>::iterator Span::begin()
+Span::iterator Span::begin()
 {
-	return (this->v->begin());
+	return (this->v.begin());
 }
 
-std::vector<int>::iterator Span::end()
+Span::iterator Span::end()
 {
-	return (this->v->end());
+	return (this->v.end());
 }
 
-unsigned int Span::shortestSpan()
+size_t Span::shortestSpan()
 {
 	int span;
 	int tmp;
 
-	if (this->v->size() == 0 || this->v->size() == 1)
+	if (this->getSize() == 0 || this->getSize() == 1)
 		throw std::string("Not enough number to get a span\n");
 	span = -1;
-	for (unsigned int  i = 0; i < this->v->size(); i++)
+	for (iterator it = this->begin(); it != this->end(); it++)
 	{
-		for (unsigned int j = i + 1; j < this->v->size(); j++)
+		for (iterator it2 = it + 1; it2 != this->end(); it2++)
 		{
-			tmp = abs((*this->v)[i] - (*this->v)[j]);
+			tmp = abs(*it - *it2);
 			if (tmp < span || span == -1)
 				span = tmp;
 			if (span == 0)
@@ -93,21 +98,21 @@ unsigned int Span::shortestSpan()
 	return (span);
 }
 
-unsigned int Span::longestSpan()
+size_t Span::longestSpan()
 {
 	int max;
 	int min;
 
-	if (this->v->size() == 0 || this->v->size() == 1)
+	if (this->getSize() == 0 || this->getSize() == 1)
 		throw std::string("Not enough number to get a span\n");
-	max = (*this->v)[0];
+	max = this->v[0];
 	min = max;
-	for (unsigned int i = 0; i < this->v->size(); i++)
+	for (iterator it = this->begin(); it != this->end(); it++)
 	{
-		if ((*this->v)[i] < min)
-			min =  (*this->v)[i];
-		else if ((*this->v)[i] > max)
-			max =  (*this->v)[i];
+		if (*it < min)
+			min =  *it;
+		else if (*it > max)
+			max =  *it;
 	}	
 	return (max - min);
 }
